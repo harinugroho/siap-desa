@@ -28,8 +28,12 @@ class PdfController extends Controller {
    */
   public function index()
   {
-    $order['asd'] = "asd";
-    return \PDF::loadView('pdf/testpdf', compact('order'))->stream();//download('download.pdf');
+      $order['nama'] = "asd";
+      $order['pekerjaan'] = "tukang ketik";
+      $order['no_ktp'] = "190283120938109";
+      $order['alamat'] = "Jalan raya, pinggir jalan";
+//      return view('pdf/sppf');
+      return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->stream();//download('download.pdf');
   }
 
 }

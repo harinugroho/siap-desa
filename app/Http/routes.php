@@ -21,3 +21,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+// Route Pemilik Tanah
+
+Route::resource('pemilik', 'PemilikController');

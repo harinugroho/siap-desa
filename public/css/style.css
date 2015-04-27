@@ -1,0 +1,73 @@
+html {
+    height: 100%;
+	padding-bottom: 20px;
+    margin: 0;
+}
+body {
+	height: 100%;
+	padding-bottom: 20px;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+	background: rgba(235,233,249,1);
+	background: -moz-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 46%, rgba(206,199,236,1) 76%, rgba(193,191,234,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(235,233,249,1)), color-stop(46%, rgba(216,208,239,1)), color-stop(76%, rgba(206,199,236,1)), color-stop(100%, rgba(193,191,234,1)));
+	background: -webkit-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 46%, rgba(206,199,236,1) 76%, rgba(193,191,234,1) 100%);
+	background: -o-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 46%, rgba(206,199,236,1) 76%, rgba(193,191,234,1) 100%);
+	background: -ms-linear-gradient(top, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 46%, rgba(206,199,236,1) 76%, rgba(193,191,234,1) 100%);
+	background: linear-gradient(to bottom, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 46%, rgba(206,199,236,1) 76%, rgba(193,191,234,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea', GradientType=0 );
+}
+
+.form-signin {
+	background-color: #f0f0f0;
+	padding:20px;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+
+	 position: relative;
+	  top: 40%;
+	  -webkit-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  transform: translateY(-50%);
+	}
+
+.head-container {
+	padding-top: 10px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #424242;
+	padding-bottom: 10px;
+	color: #fff;
+}
+.form-container {
+	background-color: #f0f0f0;
+	padding:20px;
+	padding-top: 20px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grid-button {
+	width:20%;
+	margin:10px;
+	padding-top:65px;
+	padding-bottom:65px;
+}
+
+.cell-icon {
+	text-align: center;
+}
+
+.page-header {
+	color: #fff;
+	text-align: left;
+	margin: 0px;
+	margin-top:10px;
+	padding-left:20px;
+	border-bottom: none;
+}
