@@ -125,7 +125,7 @@ class PemilikController extends Controller {
             $pemilik->pekerjaan = $input['pekerjaan'];
             $pemilik->alamat = $input['alamat'];
             $pemilik->save();
-            Session::flash('message', 'Data identitas berhasil dimasukkan!');
+            Session::flash('message', 'Data identitas berhasil diubah!');
             return Redirect::to('pemilik');
         }
 	}
