@@ -31,11 +31,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             @if (!Auth::guest())
             <ul class="nav navbar-nav">
-                <li class="active"><a href="dashboard.html">Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tambah Data <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Identitas</a></li>
+                        <li><a href="{{ URL::to('pemilik/create') }}">Identitas</a></li>
                         <li><a href="#">Tanah</a></li>
                         <!--li class="divider"></li-->
                     </ul>
@@ -43,14 +43,14 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lihat Data <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Identitas</a></li>
+                        <li><a href="{{ URL::to('pemilik') }}">Identitas</a></li>
                         <li><a href="#">Tanah</a></li>
                         <!--li class="divider"></li-->
                     </ul>
                 </li>
             </ul>
             <div class="collapse navbar-collapse">
-                <div class="navbar-text navbar-right">Anda login sebagai <b>{{ Auth::user()->name }}</b>. <a href="{{ Auth::logout() }}" class="navbar-link">(Logout)</a>
+                <div class="navbar-text navbar-right">Anda login sebagai <b>{{ Auth::user()->name }}</b>. <a href="{{ url('/auth/logout') }}" class="navbar-link">(Logout)</a>
                 </div>
             </div><!-- /.navbar-collapse -->
             @endif
@@ -61,7 +61,13 @@
 
 	@yield('content')
 
-	<!-- Scripts -->
+    @if (!Auth::guest())
+    <div class="footer container">
+        &copy; 2015 SIAP DESA
+    </div>
+    @endif
+
+<!-- Scripts -->
     <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 </body>

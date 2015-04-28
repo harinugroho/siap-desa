@@ -2,6 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Pemilik;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Request;
 
 
@@ -20,7 +25,8 @@ class PemilikController extends Controller {
 	public function index()
 	{
         //TODO create view of list pemilik
-		return view('pemilik/register');
+        $pemilik = Pemilik::all();
+		return view('pemilik.index')->with('pemilik', $pemilik);
 	}
 
 	/**
@@ -30,7 +36,7 @@ class PemilikController extends Controller {
 	 */
 	public function create()
 	{
-        return view("pemilik/register");
+        return view("pemilik/create");
 	}
 
 	/**
@@ -41,8 +47,25 @@ class PemilikController extends Controller {
 	public function store()
 	{
 		$input = Request::all();
-        Pemilik::create($input);
-        return view('home');
+        $rules = array(
+            'nama' => 'required',
+            'no_ktp' => 'required|numeric',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::to('pemilik/create')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            Pemilik::create($input);
+            Session::flash('message', 'Data identitas berhasil dimasukkan!');
+            return Redirect::to('pemilik');
+        }
 	}
 
 	/**
@@ -53,7 +76,8 @@ class PemilikController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $pemilik = Pemilik::find($id);
+		return view('pemilik/view')->with("pemilik", $pemilik);
 	}
 
 	/**
@@ -64,7 +88,8 @@ class PemilikController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$pemilik = Pemilik::find($id);
+        return view('pemilik/edit')->with("pemilik", $pemilik);
 	}
 
 	/**
@@ -75,7 +100,34 @@ class PemilikController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $input = Request::except('_method', '_token');
+        $rules = array(
+            'nama' => 'required',
+            'no_ktp' => 'required|numeric',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::to('pemilik/'.$input['id'].'/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            $pemilik = Pemilik::find($input['id']);
+            $pemilik->nama = $input['nama'];
+            $pemilik->no_ktp = $input['no_ktp'];
+            $pemilik->tempat_lahir = $input['tempat_lahir'];
+            $pemilik->tanggal_lahir = $input['tanggal_lahir'];
+            $pemilik->agama = $input['agama'];
+            $pemilik->pekerjaan = $input['pekerjaan'];
+            $pemilik->alamat = $input['alamat'];
+            $pemilik->save();
+            Session::flash('message', 'Data identitas berhasil dimasukkan!');
+            return Redirect::to('pemilik');
+        }
 	}
 
 	/**

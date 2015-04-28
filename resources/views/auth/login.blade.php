@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ url('/auth/login') }}" method="POST">
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="email">Email</label>
@@ -20,8 +20,7 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span>
                     </span>
-                    <input autofocus placeholder="Masukkan email" type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
-
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email" value="{{ old('email') }}">
                 </div>
             </div>
             <div class="form-group">
