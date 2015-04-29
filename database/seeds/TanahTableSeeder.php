@@ -18,7 +18,7 @@ class TanahTableSeeder extends Seeder {
             $pemilik = Pemilik::find($id);
             $tanah = Tanah::create(array(
                 'pemilik_id' => $id,
-                'no_sppt_pbb' => $faker->randomNumber(),
+                'no_sppt_pbb' => $ii,
                 'nama' => $pemilik->nama,
                 'jalan' => $faker->address,
                 'rt' => $faker->numberBetween(1,10),

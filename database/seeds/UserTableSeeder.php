@@ -7,9 +7,9 @@
       DB::table('users')->delete();
 
       $user = User::create(array(
-        'name' => 'Gede',
-        'email' => 'gedewahyu.ap@gmail.com',
-        'password' => bcrypt('qwerty')
+        'name' => 'Admin',
+        'email' => 'admin@gmail.com',
+        'password' => bcrypt('admin')
       ));
 
       $faker = Faker\Factory::create();

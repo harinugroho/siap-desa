@@ -63,6 +63,10 @@
                         <td width="100px"><label>Luas</label></td>
                         <td>{{ $tanah->luas }}</td>
                     </tr>
+                    <tr>
+                        <td><span class="btn btn-success">Lihat Peta</span> </td>
+                        
+                    </tr>
                 </table>
             </div>
         </div>
@@ -85,7 +89,7 @@
                     <td style="text-align:center;"><strike>Download</strike></td>
                 @else
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="#">Download</a></td>
+                    <td style="text-align:center;"><a href="{{ URL::to("generate/sppf/".$allSppf[0]->id) }}">Download</a></td>
                 @endif
             </tr>
         </table>

@@ -18,7 +18,7 @@
                 </center>
             </td>
             <td style="width:10%;">
-                <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(175)->generate(URL::to('generate/'.$order['hashed']))) }} ">
+                <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(150)->generate(URL::to('generate/'.$order['hashed']))) }} ">
             </td>
         </tr>
     </table>
