@@ -17,7 +17,7 @@ class SuratGeneratorController extends Controller {
 
     public function index($hashed)
     {
-        $hashed = substr($hashed,0,$hashed->length-3);
+        $hashed = substr($hashed,0,strlen($hashed)-3);
         $ket = Crypt::decrypt($hashed);
         if ("sppf" == $ket['jenis']){
             return SuratGeneratorController::sppf($ket['id']);
