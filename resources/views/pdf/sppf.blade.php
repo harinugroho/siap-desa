@@ -14,13 +14,22 @@
         }
     </style>
     <body>
-    <center>
-    SURAT PERNYATAAN PENGUASAAN FISIK
-    <br>
-    BIDANG TANAH (SPORADIK)
-    </center>
-    <p>Yang bertanda tangan dibawah ini :</p>
+    <table>
+        <tr>
+            <td style="width:90%;">
+                <center>
+                SURAT PERNYATAAN PENGUASAAN FISIK
+                <br>
+                BIDANG TANAH (SPORADIK)
+                </center>
+            </td>
+            <td style="width:10%;">
+                qr code
+            </td>
+        </tr>
+    </table>
 
+    <p>Yang bertanda tangan dibawah ini :</p>
     <table class="isian">
         <tr>
             <td>Nama</td>
