@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('testpdf', 'PdfController@index');
 
@@ -27,10 +27,20 @@ Route::controllers([
 Route::resource('pemilik', 'PemilikController');
 
 // Route Data Tanah
-//Route::resource('tanah', 'TanahController');
 Route::get('tanah', 'TanahController@index');
 Route::get('tanah/{id}', 'TanahController@show');
 Route::get('tanah/{id_pemilik}/create', 'TanahController@create');
 Route::post('tanah/store', 'TanahController@store');
 Route::get('tanah/{id}/edit', 'TanahController@edit');
 Route::put('tanah/{id}', 'TanahController@update');
+
+// Route Surat Pernyataan Penguasaan Fisik
+Route::get('surat/sppf/{id}/create', 'DataSuratController@createSppf');
+Route::get('surat/sppf/{id}/edit', 'DataSuratController@editSppf');
+Route::post('surat/sppf/{id}', 'DataSuratController@storeSppf');
+Route::put('surat/sppf/{id}', 'DataSuratController@updateSppf');
+
+// Route untuk generator surat
+Route::get('generate/{hashed}', 'SuratGeneratorController@index');
+
+Route::get('generate/sppf/{id}', 'SuratGeneratorController@sppf');

@@ -69,19 +69,24 @@
         <hr>
 
         <h4>Dokumen</h4>
-
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
         <table class="table table-striped">
             <tr>
                 <th>Dokumen</th>
+                <th style="text-align:center;">Edit</th>
                 <th style="text-align:center;">Download</th>
             </tr>
             <tr>
                 <td>Surat Pernyataan Penguasaan Fisik</td>
-                <td style="text-align:center;"><a href="#">Download</a></td>
-            </tr>
-            <tr>
-                <td>Surat Kuasa</td>
-                <td style="text-align:center;"><a href="#">Lengkapi Data</a></td>
+                @if (count($allSppf) == 0)
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/$tanah->id/create") }}">Buat Surat</a></td>
+                    <td style="text-align:center;"><strike>Download</strike></td>
+                @else
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
+                    <td style="text-align:center;"><a href="#">Download</a></td>
+                @endif
             </tr>
         </table>
     </div>

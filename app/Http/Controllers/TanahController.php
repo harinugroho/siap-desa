@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Models\Sppf;
 use App\Models\Tanah;
 use App\Models\Pemilik;
 use Illuminate\Http\Request;
@@ -87,12 +88,15 @@ class TanahController extends Controller {
 	 * @return Response
 	 */
 	public function show($id)
-	{
-		$tanah = Tanah::find($id);
-        return view('tanah/view')->with("tanah", $tanah);
-	}
+    {
+        $tanah = Tanah::find($id);
+        $sppf = Sppf::where('tanah_id', $id)->get();
+        return view('tanah/view')
+            ->with('allSppf', $sppf)
+            ->with("tanah", $tanah);
+    }
 
-	/**
+    /**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id

@@ -1,9 +1,3 @@
-<?php
-    $nama = $order['nama'];
-    $pekerjaan = $order['pekerjaan'];
-    $alamat = $order['alamat'];
-    $no_ktp = $order['no_ktp'];
-?>
 <html>
     <style>
         body {
@@ -24,7 +18,7 @@
                 </center>
             </td>
             <td style="width:10%;">
-                qr code
+                <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(175)->generate(URL::to('generate/'.$order['hashed']))) }} ">
             </td>
         </tr>
     </table>
@@ -33,23 +27,23 @@
     <table class="isian">
         <tr>
             <td>Nama</td>
-            <td>: {{$nama}}</td>
+            <td>: {{ $order['pemilik']->nama }}</td>
+        </tr>
+        <tr>
+            <td>Umur</td>
+            <td>: {{ $order['umur'] }}</td>
         </tr>
         <tr>
             <td>Pekerjaan</td>
-            <td>: {{$pekerjaan}}</td>
+            <td>: {{ $order['pemilik']->pekerjaan }}</td>
         </tr>
         <tr>
             <td>Nomor KTP</td>
-            <td>: {{$no_ktp}}</td>
+            <td>: {{$order['pemilik']->no_ktp}}</td>
         </tr>
         <tr>
             <td>Alamat</td>
-            <td>: {{$alamat}}</td>
-        </tr>
-        <tr>
-            <td>Nama</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['pemilik']->alamat}}</td>
         </tr>
     </table>
 
@@ -58,19 +52,19 @@
     <table class="isian">
         <tr>
             <td>Jalan</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->jalan}}</td>
         </tr>
         <tr>
             <td>RT/RW</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->rt}} / {{$order['tanah']->rw}}</td>
         </tr>
         <tr>
             <td>Desa/Kelurahan</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->desa}}</td>
         </tr>
         <tr>
             <td>Kabupaten/Kotamadya</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->kabupaten}}</td>
         </tr>
     </table>
     <p>Dengan batas-batas tanah :
@@ -79,23 +73,23 @@
     <table class="isian">
         <tr>
             <td>Sebelah Utara</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->batas_utara}}</td>
         </tr>
         <tr>
             <td>Sebelah Timur</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->batas_timur}}</td>
         </tr>
         <tr>
             <td>Sebelah Selatan</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->batas_selatan}}</td>
         </tr>
         <tr>
             <td>Sebelah Barat</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['tanah']->batas_barat}}</td>
         </tr>
     </table>
 
-    <p>Tanah tersebut saya peroleh dari {{$nama}} sejak tahun {{$nama}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
+    <p>Tanah tersebut saya peroleh dari {{$order['tanah']->nama_sebelumnya}} sejak tahun {{$order['tanah']->diperoleh_tahun}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
     </p>
 
     <p>Pernyataan ini saya buat dengan sebenarnya dan penuh tanggung jawab serta saya bersedia untuk diangkat sumpah bila diperlukan, apabila pernyataan ini tidak benar dikemudian hari ada pihak yang dirugikan, maka saya bersedia dituntut sesuai hukum yang berlaku.
@@ -106,37 +100,38 @@
     <table class="isian">
         <tr>
             <td>Nama</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->nama_1}}</td>
         </tr>
         <tr>
             <td>Umur</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->umur_1}}</td>
         </tr>
         <tr>
             <td>Pekerjaan</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->pekerjaan_1}}</td>
         </tr>
         <tr>
             <td>Alamat</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->alamat_1}}</td>
         </tr>
     </table>
-    <table>
+    <br>
+    <table class="isian">
         <tr>
             <td>Nama</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->nama_2}}</td>
         </tr>
         <tr>
             <td>Umur</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->umur_2}}</td>
         </tr>
         <tr>
             <td>Pekerjaan</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->pekerjaan_2}}</td>
         </tr>
         <tr>
             <td>Alamat</td>
-            <td>: {{$nama}}</td>
+            <td>: {{$order['sppf']->alamat_2}}</td>
         </tr>
     </table>
 
@@ -145,20 +140,20 @@
             <td style="width:60%;">
                 <table>
                     <tr>
-                        <td>{{$nama}}</td>
+                        <td>{{$order['sppf']->nama_1}}</td>
                         <td>(...........)</td>
                     </tr>
-                    <tr>
-                        <td>{{$nama}}</td>
+                    <tr style="padding-top: 25px;">
+                        <td>{{$order['sppf']->nama_2}}</td>
                         <td>(...........)</td>
                     </tr>
                 </table>
             </td>
             <td style="width:40%;">
-                <p>{{$nama}}</p>
+                <p>Cisomang Barat, {{$order['tanggal']}}</p>
                 <p>Yang membuat pernyataan</p>
-                <p> </p>
-                <p> </p>
+                <br>
+                <p> {{ $order['pemilik']->nama }} </p>
 
             </td>
         </tr>

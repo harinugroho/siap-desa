@@ -32,7 +32,7 @@ class PdfController extends Controller {
       $order['no_ktp'] = "190283120938109";
       $order['alamat'] = "Jalan raya, pinggir jalan";
 //      return view('pdf/sppf');
-      return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('download.pdf');
+      return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->stream();//download('download.pdf');
   }
 
 }
