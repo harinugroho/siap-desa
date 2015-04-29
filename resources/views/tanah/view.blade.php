@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <!--content-->
-    <div class="container topper" style="padding:10px;"></div>
+    <div class="header container">Data Tanah - {{ $tanah->no_sppt_pbb }}</div>
     <div class="container" style="background:white;">
 
         <div class="row">

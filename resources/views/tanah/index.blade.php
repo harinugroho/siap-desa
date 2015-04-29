@@ -1,6 +1,7 @@
 @extends('app')
 @section('content')
     <!--content-->
+    <div class="header container">Daftar Semua Data Tanah</div>
     <div class="container" style="background:white;">
         <ol class="breadcrumb" style="font-size:12px; background:none; text-align:left;">
             <li><a href="{{ URL::to('/') }}">Home</a></li>

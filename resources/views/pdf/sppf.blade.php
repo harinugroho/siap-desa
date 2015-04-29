@@ -9,6 +9,9 @@
         body {
             font-family: 'times new roman';
         }
+        .isian {
+            padding-left: 20px;
+        }
     </style>
     <body>
     <center>
@@ -18,7 +21,7 @@
     </center>
     <p>Yang bertanda tangan dibawah ini :</p>
 
-    <table>
+    <table class="isian">
         <tr>
             <td>Nama</td>
             <td>: {{$nama}}</td>
@@ -43,7 +46,7 @@
 
     <p>Dengan ini menyatakan bahwa saya dengan itikad baik telah menguasai sebidang tanah yang terletak di :
     </p>
-    <table>
+    <table class="isian">
         <tr>
             <td>Jalan</td>
             <td>: {{$nama}}</td>
@@ -64,7 +67,7 @@
     <p>Dengan batas-batas tanah :
     </p>
 
-    <table>
+    <table class="isian">
         <tr>
             <td>Sebelah Utara</td>
             <td>: {{$nama}}</td>
@@ -83,7 +86,7 @@
         </tr>
     </table>
 
-    <p>Tanah tersebut saya peroleh dari	{{$nama}} sejak tahun {{$nama}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
+    <p>Tanah tersebut saya peroleh dari {{$nama}} sejak tahun {{$nama}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
     </p>
 
     <p>Pernyataan ini saya buat dengan sebenarnya dan penuh tanggung jawab serta saya bersedia untuk diangkat sumpah bila diperlukan, apabila pernyataan ini tidak benar dikemudian hari ada pihak yang dirugikan, maka saya bersedia dituntut sesuai hukum yang berlaku.
@@ -91,7 +94,7 @@
 
     <p>Disaksikan oleh :
     </p>
-    <table>
+    <table class="isian">
         <tr>
             <td>Nama</td>
             <td>: {{$nama}}</td>
@@ -128,9 +131,9 @@
         </tr>
     </table>
 
-    <table>
+    <table style="width:100%;">
         <tr>
-            <td>
+            <td style="width:60%;">
                 <table>
                     <tr>
                         <td>{{$nama}}</td>
@@ -142,7 +145,7 @@
                     </tr>
                 </table>
             </td>
-            <td>
+            <td style="width:40%;">
                 <p>{{$nama}}</p>
                 <p>Yang membuat pernyataan</p>
                 <p> </p>

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container topper" style="padding:10px;"></div>
+    <div class="header container">Daftar Identitas</div>
     <div class="container" style="padding-bottom:10px; padding-top:0px;">
         <ol class="breadcrumb" style="font-size:12px; background:none; text-align:left;">
             <li><a href="{{URL::to('/')}}">Home</a></li>

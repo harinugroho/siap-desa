@@ -2,7 +2,7 @@
 
 @section('content')
     <!--content-->
-    <div class="container topper" style="padding:10px;"></div>
+    <div class="header container">{{ $pemilik->no_ktp }} - {{ $pemilik->nama }}</div>
     <div class="container" style="background:white;">
 
         <div class="row">
