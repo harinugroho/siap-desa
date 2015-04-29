@@ -43,7 +43,7 @@
 				<div class="title">Laravel 5</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 				<div class="visible-print text-center">
-						<img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(400)->generate('http://www.acm.org/sigs/publications/sig-alternate.pdf')) }} ">
+						<img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(100)->generate("localhost/desa/testpdf"")) }} ">
 						<p>Scan me to return to the original page.</p>
 				</div>			
 			</div>

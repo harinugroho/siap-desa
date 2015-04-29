@@ -24,7 +24,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">SIAP DESA</a>
+            <a class="navbar-brand" href="{{ URL::to('/') }}">SIAP DESA</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,7 +36,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tambah Data <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ URL::to('pemilik/create') }}">Identitas</a></li>
-                        <li><a href="#">Tanah</a></li>
+                        {{--<li><a href="{{ URL::to('tanah/create') }}">Tanah</a></li>--}}
                         <!--li class="divider"></li-->
                     </ul>
                 </li>
@@ -44,7 +44,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lihat Data <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ URL::to('pemilik') }}">Identitas</a></li>
-                        <li><a href="#">Tanah</a></li>
+                        <li><a href="{{ URL::to('tanah') }}">Tanah</a></li>
                         <!--li class="divider"></li-->
                     </ul>
                 </li>
@@ -70,5 +70,7 @@
 <!-- Scripts -->
     <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+
+    @yield('script')
 </body>
 </html>

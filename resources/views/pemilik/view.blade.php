@@ -41,7 +41,7 @@
         </div>
         <hr>
 
-        <h4>Daftar Tanah &nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="create-tanah.html" role="button">Tambahkan Tanah</a>
+        <h4>Daftar Tanah &nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{{ URL::to("tanah/$pemilik->id/create") }}" role="button">Tambahkan Tanah</a>
         </h4>
 
         <table class="table table-striped">
@@ -51,12 +51,15 @@
                 <th>Alamat</th>
                 <th style="text-align:center;"> </th>
             </tr>
+            <?php $ii=1; ?>
+            @foreach($tanah as $row)
             <tr>
-                <td>1</td>
-                <td>748267371406067</td>
-                <td>Jl Margonda Raya 20 Kukusan Depok</td>
-                <td style="text-align:center;"><a href="view-tanah.html"><span class="glyphicon glyphicon-file"></span></a></td>
+                <td>{{ $ii++ }}</td>
+                <td>{{ $row->no_sppt_pbb }}</td>
+                <td>{{ $row->jalan }}</td>
+                <td style="text-align:center;"><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-file"></span></a></td>
             </tr>
+            @endforeach
         </table>
     </div>
 @endsection

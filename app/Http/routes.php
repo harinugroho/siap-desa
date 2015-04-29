@@ -24,5 +24,13 @@ Route::controllers([
 
 
 // Route Pemilik Tanah
-
 Route::resource('pemilik', 'PemilikController');
+
+// Route Data Tanah
+//Route::resource('tanah', 'TanahController');
+Route::get('tanah', 'TanahController@index');
+Route::get('tanah/{id}', 'TanahController@show');
+Route::get('tanah/{id_pemilik}/create', 'TanahController@create');
+Route::post('tanah/store', 'TanahController@store');
+Route::get('tanah/{id}/edit', 'TanahController@edit');
+Route::put('tanah/{id}', 'TanahController@update');

@@ -1,12 +1,11 @@
 @extends('app')
-
 @section('content')
-    <div class="container topper" style="padding:10px;"></div>
-    <div class="container" style="padding-bottom:10px; padding-top:0px;">
+    <!--content-->
+    <div class="container" style="background:white;">
         <ol class="breadcrumb" style="font-size:12px; background:none; text-align:left;">
-            <li><a href="{{URL::to('/')}}">Home</a></li>
-            <li><a href="{{URL::to('pemilik')}}">Identitas</a> </li>
-            <li>Daftar Data</li>
+            <li><a href="{{ URL::to('/') }}">Home</a></li>
+            <li><a href="{{ URL::to('tanah') }}">Tanah</a></li>
+            <li class="active">Daftar Data</li>
         </ol>
         <!--search-->
         <div class="input-group">
@@ -22,35 +21,34 @@
             </div><!-- /btn-group -->
             <input type="text" class="form-control" aria-label="...">
        <span class="input-group-btn">
-        <button class="btn btn-default" type="button"> Cari </button>
+        <button class="btn btn-default" type="button">Cari!</button>
       </span>
         </div><br/>
         <!--end of search-->
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
-        {{--<h6>Menampilkan 1 dari 1 data</h6>--}}
         <!--result table-->
         <table class="table table-striped">
             <tr>
                 <th>No.</th>
-                <th>NIK</th>
-                <th>Nama</th>
-                <th>Lihat</th>
-                <th>Edit</th>
+                <th>No SPPT PBB</th>
+                <th>Nama Pemilik</th>
+                <th class="cell-icon">Lihat</th>
+                <th class="cell-icon">Edit</th>
             </tr>
             <!-- generate-->
-            <?php $ii = 1; ?>
-            @foreach($pemilik as $key => $value)
+            <?php $ii=1; ?>
+            @foreach($tanah as $row)
             <tr>
                 <td>{{ $ii++ }}</td>
-                <td>{{ $value->no_ktp}}</td>
-                <td>{{ $value->nama }}</td>
-                <td><a href="{{ URL::to("pemilik/$value->id") }}" title="Lihat Identitas"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
-                <td><a href="{{ URL::to("pemilik/$value->id/edit") }}" title="Ubah Identitas"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
+                <td>{{ $row->no_sppt_pbb }}</td>
+                <td><a href="{{ URL::to("pemilik/$row->pemilik_id") }}">{{ $row->nama }}</a></td>
+                <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-plus"></span> Lihat</a></td>
+                <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id/edit") }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
             </tr>
             @endforeach
-                        <!--generate-->
+            <!--generate-->
         </table>
         <!--end of result table-->
         <!--pagination-->

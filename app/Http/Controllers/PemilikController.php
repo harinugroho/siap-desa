@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Pemilik;
+use App\Models\Tanah;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -77,7 +78,10 @@ class PemilikController extends Controller {
 	public function show($id)
 	{
         $pemilik = Pemilik::find($id);
-		return view('pemilik/view')->with("pemilik", $pemilik);
+        $tanah = Tanah::where('pemilik_id', $id)->get();
+		return view('pemilik/view')
+            ->with("pemilik", $pemilik)
+            ->with('tanah', $tanah);
 	}
 
 	/**
