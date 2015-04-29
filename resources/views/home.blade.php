@@ -9,10 +9,10 @@
             <div class="col-md-6">
               <div class="header-db">1. Identitas</div>
               <div class="button-container">
-                <a class="btn btn-danger grid-button" href="create-identitas.html">
+                <a class="btn btn-danger grid-button" href="{{ URL::to('pemilik/create') }}">
                   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size:3em;"></span><br/>Tambah data identitas
                 </a>        
-                <a class="btn btn-warning grid-button" href="view-identitas-all.html">
+                <a class="btn btn-warning grid-button" href="{{ URL::to('pemilik') }}">
                   <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="font-size:3em;"></span><br/>Lihat data identitas
                 </a>
               </div>
@@ -21,10 +21,10 @@
               <div class="header-db">2. Tanah</div>
               <div class="button-container">
               
-            <a class="btn btn-success grid-button" href="view-identitas-all.html">
+            <a class="btn btn-success grid-button" href="{{ URL::to('tanah/create') }}">
               <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size:3em;"></span><br/>Tambah data tanah
             </a>
-            <a class="btn btn-info grid-button" href="view-identitas-all.html">
+            <a class="btn btn-info grid-button" href="{{ URL::to('tanah') }}">
               <span class="glyphicon glyphicon-grain" aria-hidden="true" style="font-size:3em;"></span><br/>Lihat data tanah
             </a>
           </div>
