@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td><span class="btn btn-success">Lihat Peta</span> </td>
-                        
+
                     </tr>
                 </table>
             </div>

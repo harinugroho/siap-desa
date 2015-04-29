@@ -17,6 +17,7 @@ class SuratGeneratorController extends Controller {
 
     public function index($hashed)
     {
+        $hashed = substr($hashed,0,$hashed->length-3);
         $ket = Crypt::decrypt($hashed);
         if ("sppf" == $ket['jenis']){
             return SuratGeneratorController::sppf($ket['id']);
@@ -38,7 +39,7 @@ class SuratGeneratorController extends Controller {
         );
         $hashed = (Crypt::encrypt($ket));
         $order['hashed'] = $hashed;
-        return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->stream();//download('download.pdf');
+        return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('download.pdf');
     }
 
 }
