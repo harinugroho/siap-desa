@@ -22,6 +22,9 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+// Route Dummy
+Route::get('dummy', 'DummyController@index');
+
 
 // Route Pemilik Tanah
 Route::resource('pemilik', 'PemilikController');

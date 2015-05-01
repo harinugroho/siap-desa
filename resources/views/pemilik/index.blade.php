@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+
     <div class="header container">Daftar Identitas</div>
     <div class="container" style="padding-bottom:10px; padding-top:0px;">
         <ol class="breadcrumb" style="font-size:12px; background:none; text-align:left;">
@@ -31,26 +32,30 @@
         @endif
         {{--<h6>Menampilkan 1 dari 1 data</h6>--}}
         <!--result table-->
-        <table class="table table-striped">
-            <tr>
-                <th>No.</th>
-                <th>NIK</th>
-                <th>Nama</th>
-                <th>Lihat</th>
-                <th>Edit</th>
-            </tr>
-            <!-- generate-->
-            <?php $ii = 1; ?>
-            @foreach($pemilik as $key => $value)
-            <tr>
-                <td>{{ $ii++ }}</td>
-                <td>{{ $value->no_ktp}}</td>
-                <td>{{ $value->nama }}</td>
-                <td><a href="{{ URL::to("pemilik/$value->id") }}" title="Lihat Identitas"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
-                <td><a href="{{ URL::to("pemilik/$value->id/edit") }}" title="Ubah Identitas"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
-            </tr>
-            @endforeach
-                        <!--generate-->
+        <table class="table table-striped datatable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>NIK</th>
+                    <th>Nama</th>
+                    <th>Lihat</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- generate-->
+                <?php $ii = 1; ?>
+                @foreach($pemilik as $key => $value)
+                <tr>
+                    <td>{{ $ii++ }}</td>
+                    <td>{{ $value->no_ktp}}</td>
+                    <td>{{ $value->nama }}</td>
+                    <td><a href="{{ URL::to("pemilik/$value->id") }}" title="Lihat Identitas"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
+                    <td><a href="{{ URL::to("pemilik/$value->id/edit") }}" title="Ubah Identitas"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
+                </tr>
+                @endforeach
+                            <!--generate-->
+            </tbody>
         </table>
         <!--end of result table-->
         <!--pagination-->
@@ -76,4 +81,26 @@
             {{--</nav>--}}
         {{--</center>--}}
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+//              $('.datatable').DataTable();
+
+            $('.datatable').dataTable( {
+                "aoColumns": [
+                  { "bSortable": false },
+                  null,
+                  null,
+                  null,
+                  null
+            ] } );
+        });
+    </script>
+@endsection
+
+@section('css')
+    <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 @endsection

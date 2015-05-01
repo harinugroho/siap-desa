@@ -11,7 +11,7 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
-
+    @yield('css')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,6 +72,7 @@
     <script src="{{ asset('/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/select2.min.js') }}"></script>
+
     <script type="text/javascript">
         $('select').select2({
             placeholder: "Silakan Pilih"
