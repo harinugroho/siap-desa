@@ -73,7 +73,9 @@
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/js/select2.min.js') }}"></script>
     <script type="text/javascript">
-        $('select').select2();
+        $('select').select2({
+            placeholder: "Silakan Pilih"
+        });
     </script>
     @yield('script')
 </body>
