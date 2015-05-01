@@ -3,17 +3,15 @@
 #### Setup
 
 * Clone Repo dulu coy
+``` bash
+git clone https://github.com/wahyuoi/Siap-Desa.git
+```
+
 * Download dependency
 ``` bash
 php composer.phar update
 ```
-
-* Tambahin database (masih table user dari sono wokwok)
-```
-php artisan migrate:install
-php artisan migrate
-```
-* Kalau ga bisa pakai artisan, import file *db_desa.sql* dari database **db_desa**
+* Buat database **db_desa** di phpmyadmin (atau sejenis)
 * Buat atau edit file **.env**, isi dengan
 
     ```
@@ -28,3 +26,10 @@ CACHE_DRIVER=file
 SESSION_DRIVER=file
 QUEUE_DRIVER=sync
 ```
+* Tambahin table ke database
+```
+php artisan migrate:install
+php artisan migrate
+php artisan db:seed
+```
+* Kalau ga bisa pakai artisan, import file *db_desa.sql* dari database **db_desa**
