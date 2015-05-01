@@ -89,7 +89,7 @@
         </tr>
     </table>
 
-    <p>Tanah tersebut saya peroleh dari {{$order['tanah']->nama_sebelumnya}} sejak tahun {{$order['tanah']->diperoleh_tahun}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
+    <p>Tanah tersebut saya peroleh dari {{$order['tanah']->nama_sebelum}} sejak tahun {{$order['tanah']->diperoleh_tahun}}  yang saat ini saya kuasai secara terus menerus, tidak dijadikan/menjadi jaminan sesuatu hutang dan tidak dalam sengketa.
     </p>
 
     <p>Pernyataan ini saya buat dengan sebenarnya dan penuh tanggung jawab serta saya bersedia untuk diangkat sumpah bila diperlukan, apabila pernyataan ini tidak benar dikemudian hari ada pihak yang dirugikan, maka saya bersedia dituntut sesuai hukum yang berlaku.
