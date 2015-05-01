@@ -28,6 +28,7 @@ Route::resource('pemilik', 'PemilikController');
 
 // Route Data Tanah
 Route::get('tanah', 'TanahController@index');
+Route::get('tanah/create', 'TanahController@createUnknown');
 Route::get('tanah/{id}', 'TanahController@show');
 Route::get('tanah/{id_pemilik}/create', 'TanahController@create');
 Route::post('tanah/store', 'TanahController@store');

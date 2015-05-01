@@ -43,6 +43,16 @@ class TanahController extends Controller {
             ->with("pemilik", $pemilik);
 	}
 
+    /**
+     *  Show the form for creating a new resource with unknown owner
+     */
+    public function createUnknown()
+    {
+        $pemiliks = Pemilik::all(["id", "nama", "no_ktp"]);
+        return view('tanah/createUnknown')
+            ->with('pemiliks', $pemiliks);
+    }
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -51,6 +61,9 @@ class TanahController extends Controller {
 	public function store()
 	{
         $input = Input::all();
+        // get data pemilik
+        $pemilik = Pemilik::find($input['pemilik_id']);
+        $input['nama'] = $pemilik->nama;
         $rules = array(
             'pemilik_id' => 'required',
             'no_sppt_pbb' => 'required',
@@ -60,20 +73,26 @@ class TanahController extends Controller {
             'nama' => 'required',
             'rt' => 'required',
             'rw' => 'required',
-            'kodepos' => 'required',
+            'kodepos' => 'required|numeric',
             'kabupaten' => 'required',
-            'diperoleh_tahun' => 'required',
+            'diperoleh_tahun' => 'required|numeric',
             'batas_utara' => 'required',
             'batas_selatan' => 'required',
             'batas_barat' => 'required',
             'batas_timur' => 'required',
-            'luas' => 'required'
+            'luas' => 'required|numeric'
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return Redirect::to("tanah/".$input['pemilik_id']."/create")
-                ->withErrors($validator)
-                ->withInput($input);
+            if ("unkown" == ($input['_mode'])) {
+                return Redirect::to("tanah/create")
+                    ->withErrors($validator)
+                    ->withInput($input);
+            } else {
+                return Redirect::to("tanah/".$input['pemilik_id']."/create")
+                    ->withErrors($validator)
+                    ->withInput($input);
+            }
         } else {
             Tanah::create($input);
             Session::flash('message', 'Data tanah berhasil dimasukkan!');

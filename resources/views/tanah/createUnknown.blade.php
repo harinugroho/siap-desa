@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-    <div class="header container">Tambah Tanah <span class="header-right">({{ $pemilik->no_ktp }} - {{ $pemilik->nama }})</span></div>
+    <div class="header container">Tambah Tanah</div>
     <form class="container" action="{{ URL::to("tanah/store") }}" method="post">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -13,11 +13,9 @@
             </div>
         @endif
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="pemilik_id" value="{{ $pemilik->id }}">
-        <input type="hidden" name="_mode" value="known">
+        <input type="hidden" name="_mode" value="unknown">
         <ol class="breadcrumb">
             <li><a href="{{ URL::to('/') }}">Home</a></li>
-            <li><a href="{{ URL::to("pemilik/$pemilik->id") }}">{{ $pemilik->no_ktp }} - {{ $pemilik->nama }}</a></li>
             <li class="active">Tambah Tanah</li>
         </ol>
         <div id="form1">
@@ -31,8 +29,12 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Atas Nama</label>
-                        <input disabled class="form-control" value="@if (old('nama')){{old('nama')}}@else{{$pemilik->nama}}@endif">
-                        <input type="hidden" name="nama" class="form-control" placeholder="Masukkan Nama" value="@if (old('nama')){{old('nama')}}@else{{$pemilik->nama}}@endif">
+                        <select class="form-control" name="pemilik_id">
+                            <option></option>
+                            @foreach($pemiliks as $row)
+                                <option value="{{$row->id}}">{{$row->nama}} - {{$row->no_ktp}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,7 @@
                 </div>
             </div>
             <center>
-                <a href="{{URL::to("pemilik/$pemilik->id")}}"><span class="btn btn-danger">Batal</span></a>
+                <a href="{{URL::to("/")}}"><span class="btn btn-danger">Batal</span></a>
                 <span id="next" class="btn btn-success">Selanjutnya</span>
             </center>
         </div>
@@ -146,7 +148,7 @@
                 </div>
             </div>
             <center>
-                <a href="{{URL::to("pemilik/$pemilik->id")}}"><span class="btn btn-danger">Batal</span></a>
+                <a href="{{URL::to("/")}}"><span class="btn btn-danger">Batal</span></a>
                 <span id="before" class="btn btn-warning">Sebelumnya</span>
                 <input type="submit" class="btn btn-success">
             </center>
