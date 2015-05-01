@@ -35,6 +35,10 @@
                         <td><label>Tahun Diperoleh</label></td>
                         <td>{{ $tanah->diperoleh_tahun }}</td>
                     </tr>
+                    <tr>
+                        <td><label>Status</label></td>
+                        <td>{{ $tanah->masalah }} & {{ $tanah->keberatan }}</td>
+                    </tr>
                 </table>
             </div>
             <div class="col-md-6">

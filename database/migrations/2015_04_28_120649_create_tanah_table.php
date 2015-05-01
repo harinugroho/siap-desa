@@ -19,6 +19,8 @@ class CreateTanahTable extends Migration {
             $table->string('no_sppt_pbb')->unique();
             $table->string('nama');
             $table->string('jalan');
+            $table->string('masalah');
+            $table->string('keberatan');
             $table->string('rt');
             $table->string('rw');
             $table->integer('kodepos');
