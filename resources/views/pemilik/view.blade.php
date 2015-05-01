@@ -49,7 +49,8 @@
                 <th>No</th>
                 <th>No. SPPT PBB</th>
                 <th>Alamat</th>
-                <th style="text-align:center;"> </th>
+                <th style="text-align:center;">Lihat</th>
+                <th style="text-align:center;">Edit</th>
             </tr>
             <?php $ii=1; ?>
             @foreach($tanah as $row)
@@ -57,7 +58,9 @@
                 <td>{{ $ii++ }}</td>
                 <td>{{ $row->no_sppt_pbb }}</td>
                 <td>{{ $row->jalan }}</td>
-                <td style="text-align:center;"><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-file"></span></a></td>
+                <td style="text-align:center;"><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-file"></span> Lihat</a></td>
+                <td style="text-align:center;"><a href="{{ URL::to("tanah/$row->id/edit") }}"><span class="glyphicon glyphicon-file"></span> Edit</a></
+                td>
             </tr>
             @endforeach
         </table>

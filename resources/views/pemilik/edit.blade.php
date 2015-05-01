@@ -51,14 +51,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="agama">Agama</label>
-
                         <select name="agama" class="form-control">
                             <option></option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katholik">Katholik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
+                            <option @if ("Islam" == (old('agama')) || "Islam" == ($pemilik->agama)){{ "selected" }}@endif value="Islam">Islam</option>
+                            <option @if ("Kristen" == (old('agama')) || "Kristen" == ($pemilik->agama)){{ "selected" }}@endif value="Kristen">Kristen</option>
+                            <option @if ("Katholik" == (old('agama')) || "Katholik" == ($pemilik->agama)){{ "selected" }}@endif value="Katholik">Katholik</option>
+                            <option @if ("Hindu" == (old('agama')) || "Hindu" == ($pemilik->agama)){{ "selected" }}@endif value="Hindu">Hindu</option>
+                            <option @if ("Budha" == (old('agama')) || "Budha" == ($pemilik->agama)){{ "selected" }}@endif value="Budha">Budha</option>
                         </select>
                     </div>
                 </div>
