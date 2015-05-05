@@ -30,26 +30,30 @@
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
         <!--result table-->
-        <table class="table table-striped">
-            <tr>
-                <th>No.</th>
-                <th>No SPPT PBB</th>
-                <th>Nama Pemilik</th>
-                <th class="cell-icon">Lihat</th>
-                <th class="cell-icon">Edit</th>
-            </tr>
-            <!-- generate-->
-            <?php $ii=1; ?>
-            @foreach($tanah as $row)
-            <tr>
-                <td>{{ $ii++ }}</td>
-                <td>{{ $row->no_sppt_pbb }}</td>
-                <td><a href="{{ URL::to("pemilik/$row->pemilik_id") }}">{{ $row->nama }}</a></td>
-                <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-plus"></span> Lihat</a></td>
-                <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id/edit") }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
-            </tr>
-            @endforeach
-            <!--generate-->
+        <table class="table table-striped datatable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>No SPPT PBB</th>
+                    <th>Nama Pemilik</th>
+                    <th class="cell-icon">Lihat</th>
+                    <th class="cell-icon">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- generate-->
+                <?php $ii=1; ?>
+                @foreach($tanah as $row)
+                <tr>
+                    <td></td>
+                    <td>{{ $row->no_sppt_pbb }}</td>
+                    <td><a href="{{ URL::to("pemilik/$row->pemilik_id") }}">{{ $row->nama }}</a></td>
+                    <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-plus"></span> Lihat</a></td>
+                    <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id/edit") }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
+                </tr>
+                @endforeach
+                <!--generate-->
+            </tbody>
         </table>
         <!--end of result table-->
         <!--pagination-->
@@ -75,4 +79,30 @@
             {{--</nav>--}}
         {{--</center>--}}
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+var t = $('.datatable').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]]
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+        });
+    </script>
+@endsection
+
+@section('css')
+    <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 @endsection
