@@ -8,7 +8,7 @@
             <li><a href="{{ URL::to('tanah') }}">Tanah</a></li>
             <li class="active">Daftar Data</li>
         </ol>
-        <!--search-->
+        <!--search
         <div class="input-group">
             <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Cari berdasarkan... <span class="caret"></span></button>
@@ -19,13 +19,13 @@
                     <li class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                 </ul>
-            </div><!-- /btn-group -->
+            </div><!-- /btn-group 
             <input type="text" class="form-control" aria-label="...">
        <span class="input-group-btn">
         <button class="btn btn-default" type="button">Cari!</button>
       </span>
         </div><br/>
-        <!--end of search-->
+        <!--end of search--><br/>
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
@@ -91,7 +91,12 @@ var t = $('.datatable').DataTable( {
             "orderable": false,
             "targets": 0
         } ],
-        "order": [[ 1, 'asc' ]]
+        "order": [[ 1, 'asc' ]],
+        "oLanguage": { 
+            "sSearch": "Cari data: ",
+            "sInfo": "Menampilkan _START_ ke _END_ dari _TOTAL_ data",
+            "sLengthMenu":   "Tampilkan _MENU_ data",
+        }
     } );
  
     t.on( 'order.dt search.dt', function () {
@@ -105,4 +110,9 @@ var t = $('.datatable').DataTable( {
 
 @section('css')
     <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <style>
+        #DataTables_Table_0_filter input {
+            width: 700px    ;
+        }
+    </style>
 @endsection
