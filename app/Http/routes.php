@@ -45,10 +45,10 @@ Route::get('tanah/riwayat/{id}/edit', 'TanahController@riwayat_edit');
 Route::put('tanah/riwayat/{id}/update', 'TanahController@riwayat_update');
 
 // Route Surat Pernyataan Penguasaan Fisik
-Route::get('surat/sppf/{id}/create', 'DataSuratController@createSppf');
-Route::get('surat/sppf/{id}/edit', 'DataSuratController@editSppf');
-Route::post('surat/sppf/{id}', 'DataSuratController@storeSppf');
-Route::put('surat/sppf/{id}', 'DataSuratController@updateSppf');
+Route::get('surat/sppf/{id}/create', 'DataSuratController@sppf_create');
+Route::get('surat/sppf/{id}/edit', 'DataSuratController@sppf_edit');
+Route::post('surat/sppf/{id}', 'DataSuratController@sppf_store');
+Route::put('surat/sppf/{id}', 'DataSuratController@sppf_update');
 
 // Route untuk generator surat
 Route::get('generate/{hashed}', 'SuratGeneratorController@index');

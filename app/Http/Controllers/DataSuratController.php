@@ -21,7 +21,7 @@ class DataSuratController extends Controller {
         $this->middleware('auth');
     }
 
-    public function createSppf($id)
+    public function sppf_create($id)
     {
         $tanah = Tanah::find($id);
         $pemilik = Pemilik::find($tanah->pemilik_id);
@@ -30,7 +30,7 @@ class DataSuratController extends Controller {
             ->with("pemilik", $pemilik);
     }
 
-    public function editSppf($id)
+    public function sppf_edit($id)
     {
         $sppf = Sppf::find($id);
         $tanah = Tanah::find($sppf->tanah_id);
@@ -41,7 +41,7 @@ class DataSuratController extends Controller {
             ->with("pemilik", $pemilik);
     }
 
-    public function storeSppf($id)
+    public function sppf_store($id)
     {
         $input = Input::all();
         $rules = array(
@@ -67,7 +67,7 @@ class DataSuratController extends Controller {
         }
     }
 
-    public function updateSppf($id)
+    public function sppf_update($id)
     {
         $input = Input::all();
         $rules = array(
