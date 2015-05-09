@@ -116,3 +116,25 @@ hr {
 	color: #fff;
 	padding: 10px 0px 10px 10px;
 }
+
+.breadcrumb li a{
+	color: #4a320d;
+}
+
+.breadcrumb .active {
+	color: #268205;
+}
+
+.breadcrumb {
+	font-size: 13px;
+}
+
+.breadcrumbct {
+	margin-top: -25px;
+	-webkit-border-bottom-right-radius: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-moz-border-radius-bottomright: 10px;
+-moz-border-radius-bottomleft: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+}
