@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Sppf;
+use App\Models\SuratRiwayatPemilikTanah;
 use App\Models\Tanah;
 use App\Models\Pemilik;
 use App\Models\RiwayatPemilikTanah;
@@ -116,8 +117,10 @@ class TanahController extends Controller {
     {
         $tanah = Tanah::find($id);
         $sppf = Sppf::where('tanah_id', $id)->get();
+        $riwayat = SuratRiwayatPemilikTanah::where('tanah_id', $id)->get();
         return view('tanah/view')
             ->with('allSppf', $sppf)
+            ->with('riwayat', $riwayat)
             ->with("tanah", $tanah);
     }
 

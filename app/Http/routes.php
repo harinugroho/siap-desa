@@ -50,6 +50,12 @@ Route::get('surat/sppf/{id}/edit', 'DataSuratController@sppf_edit');
 Route::post('surat/sppf/{id}', 'DataSuratController@sppf_store');
 Route::put('surat/sppf/{id}', 'DataSuratController@sppf_update');
 
+// Route Surat Keterangan Riwayat Pemilik
+Route::get('surat/riwayat/{id}/create', 'DataSuratController@surat_riwayat_create');
+Route::get('surat/riwayat/{id}/edit', 'DataSuratController@surat_riwayat_edit');
+Route::post('surat/riwayat/{id}', 'DataSuratController@surat_riwayat_store');
+Route::put('surat/riwayat/{id}', 'DataSuratController@surat_riwayat_update');
+
 // Route untuk generator surat
 Route::get('generate/{hashed}', 'SuratGeneratorController@index');
 

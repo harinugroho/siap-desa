@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 use App\Models\Pemilik;
 use App\Models\Sppf;
+use App\Models\SuratRiwayatPemilikTanah;
 use App\Models\Tanah;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -99,6 +100,75 @@ class DataSuratController extends Controller {
             $sppf->save();
             Session::flash('message', 'Data Surat Pernyataan Penguasaan Fisik berhasil diubah!');
             return Redirect::to('tanah/'.$id);
+        }
+    }
+
+    // Surat Riwayat
+    public function surat_riwayat_create($id){
+        $tanah = Tanah::find($id);
+        return view('surat/riwayat/create')
+            ->with("tanah", $tanah);
+    }
+
+    public function surat_riwayat_store($id){
+        $input = Input::all();
+        $rules = array(
+            'no_surat' => 'required',
+            'nama_lurah' => 'required',
+            'nip_lurah' => 'required',
+            'tanggal' => 'required',
+            'saksi_1' => 'required',
+            'saksi_2' => 'required'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()){
+            return Redirect::to('surat/riwayat/'.$id.'/create')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            $input['tanah_id'] = $id;
+            (SuratRiwayatPemilikTanah::create($input));
+            Session::flash('message', 'Data Surat Keterangan Riwayat Tanah berhasil dimasukkan!');
+            return Redirect::to('tanah/'.$id);
+        }
+    }
+
+    public function surat_riwayat_edit($id) {
+        $riwayat = SuratRiwayatPemilikTanah::find($id);
+        $tanah = Tanah::find($riwayat->tanah_id);
+
+        return view('surat/riwayat/edit')
+            ->with('tanah', $tanah)
+            ->with('riwayat', $riwayat);
+    }
+
+    public function surat_riwayat_update($id){
+        $input = Input::all();
+        $rules = array(
+            'no_surat' => 'required',
+            'nama_lurah' => 'required',
+            'nip_lurah' => 'required',
+            'tanggal' => 'required',
+            'saksi_1' => 'required',
+            'saksi_2' => 'required'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()){
+            return Redirect::to('surat/riwayat/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            var_dump($id);
+            $riwayat = SuratRiwayatPemilikTanah::find($id);
+            $riwayat->no_surat = $input['no_surat'];
+            $riwayat->nama_lurah = $input['nama_lurah'];
+            $riwayat->nip_lurah = $input['nip_lurah'];
+            $riwayat->tanggal = $input['tanggal'];
+            $riwayat->saksi_1 = $input['saksi_1'];
+            $riwayat->saksi_2 = $input['saksi_2'];
+            $riwayat->save();
+            Session::flash('message', 'Data Surat Keterangan Riwayat Tanah berhasil diubah!');
+            return Redirect::to('tanah/'.$riwayat->tanah_id);
         }
     }
 

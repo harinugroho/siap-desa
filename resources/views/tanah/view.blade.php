@@ -115,6 +115,16 @@
                     <td style="text-align:center;"><a href="{{ URL::to("generate/sppf/".$allSppf[0]->id) }}">Download</a></td>
                 @endif
             </tr>
+            <tr>
+                <td>Surat Keterangan Riwayat Pemilik Tanah</td>
+                @if (count($riwayat) == 0)
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/$tanah->id/create") }}">Buat Surat</a></td>
+                    <td style="text-align:center;"><strike>Download</strike></td>
+                @else
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
+                    <td style="text-align:center;"><a href="{{ URL::to("generate/riwayat/".$riwayat[0]->id) }}">Download</a></td>
+                @endif
+            </tr>
         </table>
     </div>
 
