@@ -58,7 +58,7 @@ class SuratGeneratorController extends Controller {
         );
         $hashed = Crypt::encrypt($ket);
         $data['hashed'] = $hashed;
-        return \PDF::loadView('pdf/riwayat', compact('data'))->setPaper('A4')->stream();
+        return \PDF::loadView('pdf/riwayat', compact('data'))->setPaper('A4')->download('riwayat_tanah_'.$data['tanah']->no_persil.'.pdf');//stream();
     }
 
 }
