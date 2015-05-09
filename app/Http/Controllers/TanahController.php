@@ -267,4 +267,30 @@ class TanahController extends Controller {
             ->with('riwayat', $riwayat);
     }
 
+    /**
+     * simpan update dari perubahan riwayat
+     */
+    public function riwayat_update($id){
+        $input = Input::except('_method', '_token');
+        $rules = array(
+            'nama' => 'required',
+            'no_buku_c' => 'required',
+            'tanggal' => 'required'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Redirect::to('tanah/riwayat/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            $riwayat = RiwayatPemilikTanah::find($id);
+            $riwayat->nama = $input['nama'];
+            $riwayat->tanggal = $input['tanggal'];
+            $riwayat->no_buku_c = $input['no_buku_c'];
+            $riwayat->save();
+            Session::flash('message', 'Data riwayat pemilik tanah berhasil diubah!');
+            return Redirect::to("/tanah/riwayat/$riwayat->tanah_id");
+        }
+    }
+
 }
