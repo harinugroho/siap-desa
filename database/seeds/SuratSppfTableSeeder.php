@@ -13,7 +13,7 @@ use Illuminate\Database\Seeder;
       public function run(){
           DB::table('surat_sppf')->delete();
 
-          $n = 5;
+          $n = 75;
 
           $faker = Faker\Factory::create();
           for($ii=0; $ii<$n; ++$ii){

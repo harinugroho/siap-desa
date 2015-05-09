@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Sppf;
 use App\Models\Tanah;
 use App\Models\Pemilik;
+use App\Models\RiwayatPemilikTanah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -67,6 +68,7 @@ class TanahController extends Controller {
         $rules = array(
             'pemilik_id' => 'required',
             'no_sppt_pbb' => 'required',
+            'no_buku_c' => 'required',
             'jalan' => 'required',
             'desa' => 'required',
             'nama_sebelum' => 'required',
@@ -84,6 +86,7 @@ class TanahController extends Controller {
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
+            // redirect to form without pemilik_id
             if ("unkown" == ($input['_mode'])) {
                 return Redirect::to("tanah/create")
                     ->withErrors($validator)
@@ -94,7 +97,10 @@ class TanahController extends Controller {
                     ->withInput($input);
             }
         } else {
-            Tanah::create($input);
+            $tanah = Tanah::create($input);
+            // add pemilik to riwayat tanah
+            $riwayat = array('tanah_id' => $tanah->id, 'nama' => $input['nama'], 'no_buku_c' => $input['no_buku_c'], 'tanggal' => date("Y-m-d"));
+            RiwayatPemilikTanah::create($riwayat);
             Session::flash('message', 'Data tanah berhasil dimasukkan!');
             return Redirect::to('pemilik/'.$input['pemilik_id']);
         }
@@ -196,5 +202,69 @@ class TanahController extends Controller {
 	{
 		//
 	}
+
+    /**
+     * menampilkan semua riwayat pemilik suatu tanah
+     * @param int $id -> id tanah
+     * @return response
+     */
+    public function riwayat_show($id){
+        $riwayat = RiwayatPemilikTanah::where('tanah_id', $id)->get();
+        $tanah = Tanah::find($id);
+        return view('riwayatpemilik/view')
+            ->with("riwayat", $riwayat)
+            ->with('tanah', $tanah);
+    }
+
+    /**
+     * Menampilkan form untuk menambah riwayat kepemilikan suatu tanah
+     * @param int $id -> id tanah
+     * @return response
+     */
+    public function riwayat_create($id){
+        $tanah = Tanah::find($id);
+        return view('riwayatpemilik/create')
+            ->with('tanah', $tanah);
+    }
+
+    /**
+     * Store to database
+     */
+    public function riwayat_store()
+    {
+        $input = Input::except('_token');
+        for($ii=0; $ii<count($input['nama']); ++$ii){
+            $arr = array(
+                'tanah_id' => $input['tanah_id'],
+                'nama' => $input['nama'][$ii],
+                'no_buku_c' => $input['no_buku_c'][$ii],
+                'tanggal' => $input['tanggal'][$ii]
+            );
+            RiwayatPemilikTanah::create($arr);
+        }
+        Session::flash('message', 'Data riwayat pemilik tanah berhasil dimasukkan!');
+        return Redirect::to("/tanah/riwayat/".$input["tanah_id"]);
+    }
+
+    /**
+     * Hapus satu riwayat pemilik berdasar id riwayat tersebut
+     */
+    public function riwayat_destroy($id){
+        $riwayat = RiwayatPemilikTanah::find($id);
+        $riwayat->delete();
+        Session::flash('message', 'Data riwayat pemilik tanah berhasil dihapus!');
+        return Redirect::to("/tanah/riwayat/".Input::get("_tanah_id"));
+    }
+
+    /**
+     * tampilkan form edit
+     */
+    public function riwayat_edit($id){
+        $riwayat = RiwayatPemilikTanah::find($id);
+        $tanah = Tanah::find($riwayat->tanah_id);
+        return view('riwayatpemilik/edit')
+            ->with('tanah', $tanah)
+            ->with('riwayat', $riwayat);
+    }
 
 }

@@ -24,9 +24,17 @@
         <div id="form1">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>No. SPPT PBB</label>
-                        <input name="no_sppt_pbb" type="text" class="form-control" placeholder="Masukkan Nomor SPPT PBB" autofocus value="@if (old('no_sppt_pbb')){{old('no_sppt_pbb')}}@else{{$tanah->no_sppt_pbb}}@endif">
+                    <div class="col-md-6 row">
+                        <div class="form-group">
+                            <label>No. SPPT PBB</label>
+                            <input name="no_sppt_pbb" type="text" class="form-control" placeholder="Masukkan Nomor SPPT PBB" autofocus value="@if (old('no_sppt_pbb')){{old('no_sppt_pbb')}}@else{{$tanah->no_sppt_pbb}}@endif">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>No. Buku C</label>
+                            <input name="no_buku_c" type="text" class="form-control" placeholder="Masukkan Nomor Buku C" value="@if (old('no_buku_c')){{old('no_buku_c')}}@else{{$tanah->no_buku_c}}@endif">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">

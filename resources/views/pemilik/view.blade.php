@@ -43,7 +43,9 @@
 
         <h4>Daftar Tanah &nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="{{ URL::to("tanah/$pemilik->id/create") }}" role="button">Tambahkan Tanah</a>
         </h4>
-
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
         <table class="table table-striped">
             <tr>
                 <th>No</th>

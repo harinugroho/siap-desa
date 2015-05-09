@@ -10,7 +10,7 @@ class TanahTableSeeder extends Seeder {
     {
         DB::table('tanah')->delete();
 
-        $n = 10;
+        $n = 100;
 
         $faker = Faker\Factory::create();
         for($ii=0; $ii<$n; ++$ii){
@@ -35,7 +35,12 @@ class TanahTableSeeder extends Seeder {
                 'rt' => $faker->numberBetween(1,10),
                 'rw' => $faker->numberBetween(1,10),
                 'kodepos' => $faker->numberBetween(1000,8000),
+                'no_buku_c' => $faker->numberBetween(1,10000),
+                'no_persil'=> $ii+$ii,
+                'blok' => $ii+2,
+                'kampung' => $faker->word,
                 'desa' => $faker->word,
+                'kecamatan' => $faker->word,
                 'kabupaten' => $faker->word,
                 'keberatan' => $keberatan,
                 'masalah' => $masalah,

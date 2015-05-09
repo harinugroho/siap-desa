@@ -16,6 +16,6 @@ class Tanah extends Model {
      *
      * @var array
      */
-    protected $fillable = ['pemilik_id', 'no_sppt_pbb', 'nama', 'jalan', 'rt', 'rw', 'kodepos', 'desa', 'kabupaten', 'nama_sebelum', 'diperoleh_tahun','batas_utara', 'batas_selatan', 'batas_barat', 'batas_timur', 'luas'];
+    protected $fillable = ['pemilik_id', 'no_sppt_pbb','no_buku_c', 'no_persil', 'blok', 'kampung', 'kecamatan', 'nama', 'jalan', 'rt', 'rw', 'kodepos', 'desa', 'kabupaten', 'nama_sebelum', 'diperoleh_tahun','batas_utara', 'batas_selatan', 'batas_barat', 'batas_timur', 'luas'];
 
 }

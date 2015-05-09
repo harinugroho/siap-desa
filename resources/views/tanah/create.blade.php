@@ -23,9 +23,17 @@
         <div id="form1">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>No. SPPT PBB</label>
-                        <input name="no_sppt_pbb" type="text" class="form-control" placeholder="Masukkan Nomor SPPT PBB" autofocus value="{{ old('no_sppt_pbb') }}">
+                    <div class="row col-md-6">
+                        <div class="form-group">
+                            <label>No. SPPT PBB</label>
+                            <input name="no_sppt_pbb" type="text" class="form-control" placeholder="Masukkan Nomor SPPT PBB" autofocus value="{{ old('no_sppt_pbb') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>No. Buku C</label>
+                            <input name="no_buku_c" type="text" class="form-control" placeholder="Masukkan Nomor Buku C" value="{{ old('no_buku_c') }}">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -44,23 +52,50 @@
                     </div>
                 </div>
                 <div class="col-md-6 row">
-                    <div class="col-md-3">
+
+                    <div class="col-md-2">
                         <div class="form-group">
-                            <label for="rt">RT</label>
-                            <input name="rt" class="form-control" id="rt" placeholder="No RT" value="{{ old('rt') }}">
+                            <label for="blok">Blok</label>
+                            <input name="blok" class="form-control" id="blok" value="{{ old('blok') }}">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="rt">RT</label>
+                            <input name="rt" class="form-control" id="rt" value="{{ old('rt') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label for="rw">RW</label>
-                            <input name="rw" class="form-control" id="rw" placeholder="No RW" value="{{ old('rw') }}">
+                            <input name="rw" class="form-control" id="rw" value="{{ old('rw') }}">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="kodepos">Kode Pos</label>
-                            <input name="kodepos" class="form-control" id="kodepos" placeholder="Kode Pos" value="{{ old('kodepos') }}">
+                            <input name="kodepos" class="form-control" id="kodepos" value="{{ old('kodepos') }}">
                         </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="no_persil">No Persil</label>
+                            <input name="no_persil" class="form-control" id="no_persil" value="{{ old('no_persil') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Kampung</label>
+                        <input name="kampung" type="text" class="form-control" placeholder="Nama Kampung" value="{{ old('kampung') }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Kecamatan</label>
+                        <input name="kecamatan" class="form-control" placeholder="Nama Kecamatan" value="{{ old('kecamatan') }}">
                     </div>
                 </div>
             </div>
@@ -78,6 +113,13 @@
                     </div>
                 </div>
             </div>
+            <center>
+                <a href="{{URL::to("pemilik/$pemilik->id")}}"><span class="btn btn-danger">Batal</span></a>
+                <span id="next" class="btn btn-success">Selanjutnya</span>
+            </center>
+        </div>
+
+        <div id="form2">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -92,14 +134,6 @@
                     </div>
                 </div>
             </div>
-            <center>
-                <a href="{{URL::to("pemilik/$pemilik->id")}}"><span class="btn btn-danger">Batal</span></a>
-                <span id="next" class="btn btn-success">Selanjutnya</span>
-            </center>
-        </div>
-
-        <div id="form2">
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

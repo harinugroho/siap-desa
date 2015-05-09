@@ -21,7 +21,7 @@ class DummyController extends Controller {
 	 */
 	public function index()
 	{
-		return view('surat/riwayatpemilik/create');
+        return view('surat/riwayatpemilik/create');
 	}
 
 }
