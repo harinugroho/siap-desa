@@ -37,7 +37,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tambah Data <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ URL::to('pemilik/create') }}">Identitas</a></li>
-                        {{--<li><a href="{{ URL::to('tanah/create') }}">Tanah</a></li>--}}
+                        <li><a href="{{ URL::to('tanah/create') }}">Tanah</a></li>
                         <!--li class="divider"></li-->
                     </ul>
                 </li>
