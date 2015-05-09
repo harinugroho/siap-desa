@@ -42,6 +42,7 @@ Route::get('tanah/riwayat/{id}/add', 'TanahController@riwayat_create');
 Route::post('tanah/riwayat/store', 'TanahController@riwayat_store');
 Route::delete('tanah/riwayat/{id}/delete', 'TanahController@riwayat_destroy');
 Route::get('tanah/riwayat/{id}/edit', 'TanahController@riwayat_edit');
+Route::put('tanah/riwayat/{id}/update', 'TanahController@riwayat_update');
 
 // Route Surat Pernyataan Penguasaan Fisik
 Route::get('surat/sppf/{id}/create', 'DataSuratController@createSppf');
