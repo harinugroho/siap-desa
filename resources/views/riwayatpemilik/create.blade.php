@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <span class="btn btn-success add-button">+</span>
+                        <span class="btn btn-success add-button">Tambah Riwayat</span>
                         <!--enabled when 2-->
                     </div>
                 </div>
@@ -61,9 +61,16 @@
 
     <!--generate-->
     <script>
+    var i = 0;
     $( ".add-button" ).click(function() {
-        $( "#rows" ).append('<div class="row"><div class="col-md-2"><div class="form-group"><label>Tanggal</label><input name="tanggal[]" type="date" class="form-control" required autofocus value="{{ old('tanggal') }}"></div></div><div class="col-md-4"><div class="form-group"><label>Nama Pemilik Baru</label><input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama Pemilik Baru" required value="{{ old('nama') }}"></div></div><div class="col-md-4"><div class="form-group"><label>No. Buku C</label><input name="no_buku_c[]" type="text" class="form-control" placeholder="Masukkan No Buku C" required value="{{ old('no_buku_c') }}"></div></div><div class="col-md-2">DELETE</div></div>');
+        i++;
+            var s = "<div id ='riwayat"+i+"' class='row'>";
+            $( "#rows" ).append(s+'<div class="col-md-2"><div class="form-group"><label>Tanggal</label><input name="tanggal[]" type="date" class="form-control" required autofocus value="{{ old('tanggal') }}"></div></div><div class="col-md-4"><div class="form-group"><label>Nama Pemilik Baru</label><input name="nama[]" type="text" class="form-control" placeholder="Masukkan Nama Pemilik Baru" required value="{{ old('nama') }}"></div></div><div class="col-md-4"><div class="form-group"><label>No. Buku C</label><input name="no_buku_c[]" type="text" class="form-control" placeholder="Masukkan No Buku C" required value="{{ old('no_buku_c') }}"></div></div><div class="col-md-2"><label>&nbsp;</label><br/><span class="btn btn-danger" onclick="removeRiwayat('+i+')">Batal</span></div></div></div>');
         });
+    function removeRiwayat(id) {
+        $("#riwayat"+id).remove();
+    }
+
     
     </script>
 @endsection

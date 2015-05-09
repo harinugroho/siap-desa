@@ -13,7 +13,9 @@
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
-        <table>
+        <br/>
+        <br/>
+        <table class="table table-striped datatable">
             <thead>
                 <tr>
                     <td>No</td>
@@ -49,4 +51,40 @@
 </div>
 
 
+@endsection
+
+@section('script')
+    <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+var t = $('.datatable').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]],
+        "oLanguage": { 
+            "sSearch": "Cari data: ",
+            "sInfo": "Menampilkan _START_ ke _END_ dari _TOTAL_ data",
+            "sLengthMenu":   "Tampilkan _MENU_ data",
+        }
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+        });
+    </script>
+@endsection
+
+@section('css')
+    <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <style>
+        #DataTables_Table_0_filter input {
+            width: 700px    ;
+        }
+    </style>
 @endsection
