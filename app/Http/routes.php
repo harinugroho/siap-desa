@@ -60,3 +60,4 @@ Route::put('surat/riwayat/{id}', 'DataSuratController@surat_riwayat_update');
 Route::get('generate/{hashed}', 'SuratGeneratorController@index');
 
 Route::get('generate/sppf/{id}', 'SuratGeneratorController@sppf');
+Route::get('generate/riwayat/{id}', 'SuratGeneratorController@riwayat');

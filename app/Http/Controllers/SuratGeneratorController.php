@@ -9,7 +9,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pemilik;
+use App\Models\RiwayatPemilikTanah;
 use App\Models\Sppf;
+use App\Models\SuratRiwayatPemilikTanah;
 use App\Models\Tanah;
 use Illuminate\Support\Facades\Crypt;
 
@@ -21,6 +23,8 @@ class SuratGeneratorController extends Controller {
         $ket = Crypt::decrypt($hashed);
         if ("sppf" == $ket['jenis']){
             return SuratGeneratorController::sppf($ket['id']);
+        } elseif ("riwayat_pemilik" == $ket['jenis']) {
+            return SuratGeneratorController::riwayat($ket['id']);
         };
     }
     public function sppf($id)
@@ -40,6 +44,21 @@ class SuratGeneratorController extends Controller {
         $hashed = (Crypt::encrypt($ket));
         $order['hashed'] = $hashed;
         return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('download.pdf');
+    }
+
+    public function riwayat($id){
+        $data['surat'] = SuratRiwayatPemilikTanah::find($id);
+        $data['tanah'] = Tanah::find($data['surat']->tanah_id);
+        $data['riwayat'] = RiwayatPemilikTanah::where('tanah_id', $data['tanah']->id)->orderBy('created_at', 'desc')->get();
+        $data['pemilik'] = Pemilik::find($data['tanah']->pemilik_id);
+
+        $ket = array(
+            "jenis" =>"riwayat_pemilik",
+            "id" => $id
+        );
+        $hashed = Crypt::encrypt($ket);
+        $data['hashed'] = $hashed;
+        return \PDF::loadView('pdf/riwayat', compact('data'))->setPaper('A4')->stream();
     }
 
 }
