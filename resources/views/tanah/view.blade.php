@@ -12,6 +12,14 @@
                         <td>{{ $tanah->no_sppt_pbb }}</td>
                     </tr>
                     <tr>
+                        <td><label>No. Persil</label></td>
+                        <td>{{ $tanah->no_persil }}</td>
+                    </tr>
+                    <tr>
+                        <td><label>No Buku C</label></td>
+                        <td>{{ $tanah->no_buku_c}}</td>
+                    </tr>
+                    <tr>
                         <td><label>Alamat</label></td>
                         <td>{{ $tanah->jalan }}</td>
                     </tr>
@@ -20,12 +28,32 @@
                         <td>{{ $tanah->rt }} / {{ $tanah->rw }} / {{ $tanah->kodepos }}</td>
                     </tr>
                     <tr>
+                        <td><label>Blok</label></td>
+                        <td>{{ $tanah->blok }}</td>
+                    </tr>
+                    <tr>
+                        <td><label>Kampung</label></td>
+                        <td>{{ $tanah->kampung }}</td>
+                    </tr>
+                    <tr>
                         <td><label>Desa / Kelurahan</label></td>
                         <td>{{ $tanah->desa }}</td>
                     </tr>
                     <tr>
+                        <td><label>Kecamatan</label></td>
+                        <td>{{ $tanah->kecamatan }}</td>
+                    </tr>
+                    <tr>
                         <td><label>Kabupaten / Kota</label></td>
                         <td>{{ $tanah->kabupaten }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table>
+                    <tr>
+                        <td><label>Status</label></td>
+                        <td>{{ $tanah->masalah }} & {{ $tanah->keberatan }}</td>
                     </tr>
                     <tr>
                         <td><label>Diperoleh Dari</label></td>
@@ -35,14 +63,6 @@
                         <td><label>Tahun Diperoleh</label></td>
                         <td>{{ $tanah->diperoleh_tahun }}</td>
                     </tr>
-                    <tr>
-                        <td><label>Status</label></td>
-                        <td>{{ $tanah->masalah }} & {{ $tanah->keberatan }}</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-6">
-                <table>
                     <tr>
                         <td width="100px"><label>Atas Nama</label></td>
                         <td>{{ $tanah->nama }}</td>
@@ -68,8 +88,7 @@
                         <td>{{ $tanah->luas }}</td>
                     </tr>
                     <tr>
-                        <td><span class="btn btn-success">Lihat Peta</span> </td>
-
+                        <td><span class="btn btn-success">Lihat Peta</span><a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a></td>
                     </tr>
                 </table>
             </div>

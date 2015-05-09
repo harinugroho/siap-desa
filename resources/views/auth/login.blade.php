@@ -20,7 +20,7 @@
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span>
                     </span>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email" value="{{ old('email') }}">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email" value="{{ old('email') }}" autofocus>
                 </div>
             </div>
             <div class="form-group">

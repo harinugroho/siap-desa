@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+use App\Http\Controllers\TanahController;
 
-Route::get('testpdf', 'PdfController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 
@@ -37,6 +37,11 @@ Route::get('tanah/{id_pemilik}/create', 'TanahController@create');
 Route::post('tanah/store', 'TanahController@store');
 Route::get('tanah/{id}/edit', 'TanahController@edit');
 Route::put('tanah/{id}', 'TanahController@update');
+Route::get('tanah/riwayat/{id}', 'TanahController@riwayat_show');
+Route::get('tanah/riwayat/{id}/add', 'TanahController@riwayat_create');
+Route::post('tanah/riwayat/store', 'TanahController@riwayat_store');
+Route::delete('tanah/riwayat/{id}/delete', 'TanahController@riwayat_destroy');
+Route::get('tanah/riwayat/{id}/edit', 'TanahController@riwayat_edit');
 
 // Route Surat Pernyataan Penguasaan Fisik
 Route::get('surat/sppf/{id}/create', 'DataSuratController@createSppf');

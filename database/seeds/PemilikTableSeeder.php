@@ -5,7 +5,7 @@ class PemilikTableSeeder extends Seeder {
     public function run(){
         DB::table('pemilik')->delete();
 
-        $n = 10;
+        $n = 100;
 
         $faker = Faker\Factory::create();
         for($ii=0; $ii<$n; ++$ii){
