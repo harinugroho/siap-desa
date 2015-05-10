@@ -1,5 +1,7 @@
 ## SIAP DESA
 
+[![Build Status](http://107.170.249.8/buildStatus/icon?job=SIAP Desa)](http://107.170.249.8/job/SIAP%20Desa/)
+
 #### Setup
 
 * Clone Repo dulu coy
