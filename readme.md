@@ -34,10 +34,16 @@ php artisan db:seed
 ```
 * Kalau ga bisa pakai artisan, import file *db_desa.sql* dari database **db_desa**
 
-Set permission untuk vendor/ dan storage/ jadi 777, agar tidak kena WSOD 
+* Composer autoload
+```
+php composer.phar dumpautoload
+```
+
+* Set permission untuk vendor/ dan storage/ jadi 777, agar tidak kena WSOD 
 ```
 chmod 777 -R storage/
 chmod 777 -R vendor/
 ```
 
-
+* Live website ada di http://dev.vesperia.id/siap-desa/
+* Jenkins CI ada di http://107.170.249.8/job/SIAP%20Desa/
