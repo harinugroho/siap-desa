@@ -1,6 +1,7 @@
 ## SIAP DESA
 
 [![Build Status](http://107.170.249.8/buildStatus/icon?job=SIAP Desa)](http://107.170.249.8/job/SIAP%20Desa/)
+[![Build Status](https://magnum.travis-ci.com/wahyuoi/Siap-Desa.svg?token=bXB2LUEYAtpUTvhmMSsq&branch=master)](https://magnum.travis-ci.com/wahyuoi/Siap-Desa)
 
 #### Setup
 
