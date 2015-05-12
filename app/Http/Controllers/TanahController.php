@@ -333,4 +333,22 @@ class TanahController extends Controller {
         Session::flash('message', 'Pindah tangan tanah berhasil !');
         return Redirect::to('tanah/'.$id);
     }
+
+    /**
+     * Mengatur status masalah tanah dan status keberatan dari tanah.
+     * Satu kali pemanggilan, akan melakukan inverse terhadap nilai yang dimiliki
+     */
+    public function masalah_update($id){
+        $tanah = Tanah::find($id);
+        $tanah->masalah = ($tanah->masalah + 1)%2;
+        $tanah->save();
+        return Redirect::to("tanah/$id");
+    }
+    public function keberatan_update($id){
+        $tanah = Tanah::find($id);
+        $tanah->keberatan = ($tanah->keberatan + 1)%2;
+        $tanah->save();
+        return Redirect::to("tanah/$id");
+    }
+
 }

@@ -53,7 +53,22 @@
                 <table>
                     <tr>
                         <td><label>Status</label></td>
-                        <td>{{ $tanah->masalah }} & {{ $tanah->keberatan }}</td>
+                        <td>
+                            <a href="{{ URL::to("tanah/$tanah->id/status/masalah") }}">
+                                @if ($tanah->masalah)
+                                    <span class="btn btn-xs btn-warning">Bermasalah</span>
+                                @else
+                                    <span class="btn btn-xs btn-success">Tidak Bermasalah</span>
+                                @endif
+                            </a>
+                            <a href="{{ URL::to("tanah/$tanah->id/status/keberatan/") }}">
+                                @if ($tanah->keberatan)
+                                    <span class="btn btn-xs btn-warning">Ada Keberatan</span>
+                                @else
+                                    <span class="btn btn-xs btn-success">Tidak Ada Keberatan</span>
+                                @endif
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td><label>Diperoleh Dari</label></td>
