@@ -296,4 +296,41 @@ class TanahController extends Controller {
         }
     }
 
+    /**
+     * Fitur memindahkan pemilik dari suatu tanah
+     */
+    // TODO ambil tanah dengan id pemilik lama, ambil id pemilik baru, update (id, nama, nama_sebelum dan tahun_diterima) pada tanah, tambah riwayat pemilik baru untuk tanah ybs
+
+    public function pindah_pemilik_create($id){
+        $pemilik = Pemilik::all();
+        $tanah = Tanah::find($id);
+        return view('pindah_pemilik/create')
+            ->with('pemilik', $pemilik)
+            ->with('tanah', $tanah);
+    }
+
+    public function pindah_pemilik_store($id){
+        $id_next = Input::get("next");
+        $no_buku_c = Input::get("no_buku_c");
+        $pemilik_next = Pemilik::find($id_next);
+
+        $tanah = Tanah::find($id_next);
+        $tanah->nama_sebelum = $tanah->nama;
+        $tanah->diperoleh_tahun = date("Y");
+        $tanah->pemilik_id = $id_next;
+        $tanah->nama = $pemilik_next->nama;
+        $tanah->no_buku_c = $no_buku_c;
+        $tanah->save();
+
+        $ar = array(
+            'tanah_id' => $tanah->id,
+            'nama' => $tanah->nama,
+            'no_buku_c' => $tanah->no_buku_c,
+            'tanggal' => date("Y-m-d")
+        );
+
+        RiwayatPemilikTanah::create($ar);
+        Session::flash('message', 'Pindah tangan tanah berhasil !');
+        return Redirect::to('tanah/'.$id);
+    }
 }
