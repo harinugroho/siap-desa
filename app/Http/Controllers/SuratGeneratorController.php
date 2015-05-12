@@ -43,7 +43,7 @@ class SuratGeneratorController extends Controller {
         );
         $hashed = (Crypt::encrypt($ket));
         $order['hashed'] = $hashed;
-        return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('download.pdf');
+        return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('sppf_'.$order['tanah']->no_persil.'.pdf');
     }
 
     public function riwayat($id){
