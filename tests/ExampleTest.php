@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 class ExampleTest extends TestCase {
 
 	/**
@@ -9,17 +11,22 @@ class ExampleTest extends TestCase {
 	 */
 	 public function testBasicExample()
 	 {
-	 	$response = $this->call('GET', '/');
-
-	 	$this->assertEquals(200, $response->getStatusCode());
+         $user = new User(array('name' => 'Admins'));
+         $this->be($user);
+         $response = $this->call('GET', '/');
+         $this->assertEquals(200, $response->getStatusCode());
 	 }
 
 	public function testTanah(){
+        $user = new User(array('name' => 'Admins'));
+        $this->be($user);
 		$response = $this->call('GET', '/tanah');
 		$this->assertEquals(200, $response->getStatusCode());
 	}
 
     public function testPemilik(){
+        $user = new User(array('name' => 'Admins'));
+        $this->be($user);
         $response = $this->call('GET', '/pemilik');
         $this->assertEquals(200, $response->getStatusCode());
     }
