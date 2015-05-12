@@ -114,8 +114,14 @@ var t = $('.datatable').DataTable( {
 @section('css')
     <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <style>
-        #DataTables_Table_0_filter input {
-            width: 700px    ;
+        .dataTables_filter {
+            width: 50%;
+        }
+        .dataTables_filter input{
+            width: 80%;
+        }
+        .dataTables_filter label{
+            width: 100%;
         }
     </style>
 @endsection
