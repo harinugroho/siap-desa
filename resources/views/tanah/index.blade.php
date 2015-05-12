@@ -48,7 +48,7 @@
                     <td></td>
                     <td>{{ $row->no_sppt_pbb }}</td>
                     <td><a href="{{ URL::to("pemilik/$row->pemilik_id") }}">{{ $row->nama }}</a></td>
-                    <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-plus"></span> Lihat</a></td>
+                    <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id") }}"><span class="glyphicon glyphicon-eye-open"></span> Lihat</a></td>
                     <td class="cell-icon" ><a href="{{ URL::to("tanah/$row->id/edit") }}"><span class="glyphicon glyphicon-cog"></span> Edit</a></td>
                 </tr>
                 @endforeach
@@ -111,8 +111,14 @@ var t = $('.datatable').DataTable( {
 @section('css')
     <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <style>
-        #DataTables_Table_0_filter input {
-            width: 700px    ;
+        .dataTables_filter {
+            width: 50%;
+        }
+        .dataTables_filter input{
+            width: 80%;
+        }
+        .dataTables_filter label{
+            width: 100%;
         }
     </style>
 @endsection
