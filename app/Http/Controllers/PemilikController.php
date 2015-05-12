@@ -63,7 +63,7 @@ class PemilikController extends Controller {
                 ->withErrors($validator)
                 ->withInput($input);
         } else {
-            $Pemilik::create($input);
+            Pemilik::create($input);
             Session::flash('message', 'Data identitas berhasil dimasukkan!');
             return Redirect::to('pemilik');
         }
