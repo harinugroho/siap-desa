@@ -52,11 +52,11 @@
 
                         <select name="agama" class="form-control">
                             <option></option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katholik">Katholik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Budha">Budha</option>
+                            <option @if ("Islam" == (old('agama'))){{ "selected" }}@endif value="Islam">Islam</option>
+                            <option @if ("Kristen" == (old('agama'))){{ "selected" }}@endif value="Kristen">Kristen</option>
+                            <option @if ("Katholik" == (old('agama'))){{ "selected" }}@endif value="Katholik">Katholik</option>
+                            <option @if ("Hindu" == (old('agama'))){{ "selected" }}@endif value="Hindu">Hindu</option>
+                            <option @if ("Budha" == (old('agama'))){{ "selected" }}@endif value="Budha">Budha</option>
                         </select>
                     </div>
                 </div>
