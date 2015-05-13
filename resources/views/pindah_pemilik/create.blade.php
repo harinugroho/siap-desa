@@ -28,7 +28,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Pemilik Tanah Selanjutnya</label>
-                        <select name="next" autofocus>
+                        <select name="next" autofocus required>
                             <option></option>
                             @foreach($pemilik as $row)
                                 <option value="{{ $row->id }}">{{ $row->nama }} - {{ $row->no_ktp }}</option>
@@ -39,7 +39,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>No Buku C terbaru</label>
-                        <input name="no_buku_c">
+                        <input name="no_buku_c" required>
                     </div>
                 </div>
             </div>

@@ -315,7 +315,7 @@ class TanahController extends Controller {
         $pemilik_next = Pemilik::find($id_next);
 
         // update data tanah
-        $tanah = Tanah::find($id_next);
+        $tanah = Tanah::find($id);
         $tanah->nama_sebelum = $tanah->nama;
         $tanah->diperoleh_tahun = date("Y");
         $tanah->pemilik_id = $id_next;
@@ -333,6 +333,10 @@ class TanahController extends Controller {
         RiwayatPemilikTanah::create($ar);
 
         // delete data surat dari pemilik lama
+        $riwayat = SuratRiwayatPemilikTanah::where('tanah_id',$tanah->id)->delete();
+        $sppf = Sppf::where('tanah_id', $tanah->id)->delete();
+
+        // redirect ke halaman tanah ybs
         Session::flash('message', 'Pindah tangan tanah berhasil !');
         return Redirect::to('tanah/'.$id);
     }
