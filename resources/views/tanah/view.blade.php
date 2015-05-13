@@ -104,7 +104,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <span class="btn btn-success">Lihat Peta</span>
+                            <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
                             <a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a>
                             <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
                         </td>

@@ -65,3 +65,6 @@ Route::get('generate/{hashed}', 'SuratGeneratorController@index');
 
 Route::get('generate/sppf/{id}', 'SuratGeneratorController@sppf');
 Route::get('generate/riwayat/{id}', 'SuratGeneratorController@riwayat');
+
+// Route untuk peta
+Route::get('peta/tanah/{id}', 'PetaController@render');

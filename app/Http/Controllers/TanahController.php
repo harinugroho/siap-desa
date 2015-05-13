@@ -314,6 +314,7 @@ class TanahController extends Controller {
         $no_buku_c = Input::get("no_buku_c");
         $pemilik_next = Pemilik::find($id_next);
 
+        // update data tanah
         $tanah = Tanah::find($id_next);
         $tanah->nama_sebelum = $tanah->nama;
         $tanah->diperoleh_tahun = date("Y");
@@ -322,14 +323,16 @@ class TanahController extends Controller {
         $tanah->no_buku_c = $no_buku_c;
         $tanah->save();
 
+        // update riwayat
         $ar = array(
             'tanah_id' => $tanah->id,
             'nama' => $tanah->nama,
             'no_buku_c' => $tanah->no_buku_c,
             'tanggal' => date("Y-m-d")
         );
-
         RiwayatPemilikTanah::create($ar);
+
+        // delete data surat dari pemilik lama
         Session::flash('message', 'Pindah tangan tanah berhasil !');
         return Redirect::to('tanah/'.$id);
     }
