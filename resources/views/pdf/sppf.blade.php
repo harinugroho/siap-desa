@@ -8,17 +8,18 @@
         }
     </style>
     <body>
-    <table>
+    <table style="margin:0;">
         <tr>
-            <td style="width:90%;">
+            <td style="width:520px;">
                 <center>
                 SURAT PERNYATAAN PENGUASAAN FISIK
                 <br>
                 BIDANG TANAH (SPORADIK)
                 </center>
             </td>
-            <td style="width:10%;">
+            <td style="width:150px; text-align:right;margin-right:0px;">
                 <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(150)->generate(URL::to('generate/'.$order['hashed']."pdf"))) }} ">
+            hehe
             </td>
         </tr>
     </table>

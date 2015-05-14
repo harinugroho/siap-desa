@@ -103,12 +103,20 @@
                         <td>{{ $tanah->luas }}</td>
                     </tr>
                     <tr>
-                        <td>
-                            <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
-                            <a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a>
-                            <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
-                        </td>
-                    </tr>
+                    <table class="buttons">
+                        <tr>
+                            <td>
+                                <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
+                            </td>
+                            <td>
+                                <a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a>
+                            </td>
+                            <td>
+                                <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
+                            </td>
+                        </tr>
+                    </table>
+                        </tr>
                 </table>
             </div>
         </div>
@@ -147,4 +155,12 @@
         </table>
     </div>
 
+@endsection
+
+@section('css')
+    <style>
+        .buttons tr td {
+            padding-right: 5px;
+        }
+    </style>
 @endsection

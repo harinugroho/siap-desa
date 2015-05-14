@@ -9,10 +9,12 @@
             <li><a href="{{ URL::to("/tanah/$tanah->id") }}">{{ $tanah->nama }}</a></li>
             <li class="active">Riwayat Pemilik</li>
         </ol>
-        <a href="{{ URL::to("/tanah/riwayat/$tanah->id/add") }}"><span class="btn btn-primary">Tambah Riwayat Tanah</span></a>
         @if (Session::has('message'))
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
+        
+        <a href="{{ URL::to("/tanah/riwayat/$tanah->id/add") }}"><span class="btn btn-primary">Tambah Riwayat Tanah</span></a>
+        
         <br/>
         <br/>
         <table class="table table-striped datatable">
