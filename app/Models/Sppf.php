@@ -24,6 +24,6 @@ class Sppf extends Model {
      *
      * @var array
      */
-    protected $fillable = ['tanah_id', 'nama_1', 'pekerjaan_1', 'umur_1', 'alamat_1', 'nama_2', 'pekerjaan_2', 'umur_2', 'alamat_2'];
+    protected $fillable = ['tanah_id', 'nama_1', 'pekerjaan_1', 'umur_1', 'alamat_1', 'nama_2', 'pekerjaan_2', 'umur_2', 'alamat_2', 'pemohon', 'status'];
 
 }

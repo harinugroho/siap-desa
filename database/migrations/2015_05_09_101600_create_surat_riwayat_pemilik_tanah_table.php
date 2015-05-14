@@ -22,6 +22,8 @@ class CreateSuratRiwayatPemilikTanahTable extends Migration {
             $table->string('saksi_1');
             $table->string('saksi_2');
             $table->date('tanggal');
+            $table->boolean('status');
+            $table->string('pemohon');
             $table->timestamps();
         });
 	}

@@ -26,7 +26,8 @@ use Illuminate\Database\Seeder;
                     'pekerjaan_2' => $faker->word,
                     'umur_2' => $faker->numberBetween(20,50),
                     'alamat_2' => $faker->address,
-                    'tanah_id' => $ii+1
+                    'tanah_id' => $ii+1,
+                    'pemohon' => $faker->name
               ));
           }
       }

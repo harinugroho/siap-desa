@@ -66,6 +66,14 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nama Pemohon Surat</label>
+                        <input name="pemohon" required type="text" class="form-control" placeholder="Masukkan Nama Pemohon" value="@if(old('pemohon')){{old('pemohon')}}@else{{$riwayat->pemohon}}@endif">
+                    </div>
+                </div>
+            </div>
             <center>
                 <a href="#"><span class="btn btn-danger">Batal</span></a>
                 <button type="submit" id="next" class="btn btn-success">Simpan</button>

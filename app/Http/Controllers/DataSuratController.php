@@ -118,7 +118,8 @@ class DataSuratController extends Controller {
             'nip_lurah' => 'required',
             'tanggal' => 'required',
             'saksi_1' => 'required',
-            'saksi_2' => 'required'
+            'saksi_2' => 'required',
+            'pemohon' => 'required'
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()){

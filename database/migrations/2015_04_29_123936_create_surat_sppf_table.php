@@ -24,6 +24,8 @@ class CreateSuratSppfTable extends Migration {
             $table->integer('umur_2');
             $table->string('pekerjaan_2');
             $table->string('alamat_2');
+            $table->boolean('status');
+            $table->string('pemohon');
             $table->timestamps();
         });
 	}

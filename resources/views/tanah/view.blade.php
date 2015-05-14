@@ -129,15 +129,18 @@
         <table class="table table-striped">
             <tr>
                 <th>Dokumen</th>
+                <th>Pemohon</th>
                 <th style="text-align:center;">Edit</th>
                 <th style="text-align:center;">Download</th>
             </tr>
             <tr>
                 <td>Surat Pernyataan Penguasaan Fisik</td>
                 @if (count($allSppf) == 0)
+                    <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
                 @else
+                    <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
                     <td style="text-align:center;"><a href="{{ URL::to("generate/sppf/".$allSppf[0]->id) }}">Download</a></td>
                 @endif
@@ -145,9 +148,11 @@
             <tr>
                 <td>Surat Keterangan Riwayat Pemilik Tanah</td>
                 @if (count($riwayat) == 0)
+                    <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
                 @else
+                    <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
                     <td style="text-align:center;"><a href="{{ URL::to("generate/riwayat/".$riwayat[0]->id) }}">Download</a></td>
                 @endif

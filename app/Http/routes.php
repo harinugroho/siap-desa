@@ -68,3 +68,6 @@ Route::get('generate/riwayat/{id}', 'SuratGeneratorController@riwayat');
 
 // Route untuk peta
 Route::get('peta/tanah/{id}', 'PetaController@render');
+
+// Route pemohon surat
+Route::get('surat/pemohon', 'PemohonController@index');

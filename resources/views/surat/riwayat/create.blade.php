@@ -18,8 +18,8 @@
                 </ul>
             </div>
         @endif
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div id="form1">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div id="form1">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -50,7 +50,7 @@
             </div>
             <br/>
             Surat Pernyataan Penguasaan Tanah memerlukan dua orang saksi untuk ikut menandatangani surat tersebut, silakan isi pada kolom berikut:
-            <br/><br>
+            <br/>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -62,6 +62,14 @@
                     <div class="form-group">
                         <label>Nama Saksi Kedua</label>
                         <input name="saksi_2" required type="text" class="form-control" placeholder="Masukkan Nama Saksi Kedua" value="{{ old('saksi_2') }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nama Pemohon Surat</label>
+                        <input name="pemohon" required type="text" class="form-control" placeholder="Masukkan Nama Pemohon" value="{{ old('pemohon') }}">
                     </div>
                 </div>
             </div>

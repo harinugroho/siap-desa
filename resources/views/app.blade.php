@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             @if (!Auth::guest())
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Identitas <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -49,6 +49,7 @@
                         <!--li class="divider"></li-->
                     </ul>
                 </li>
+                <li><a href="{{ URL::to('surat/pemohon') }}">Daftar Pemohon</a></li>
             </ul>
             <div class="collapse navbar-collapse">
                 <div class="navbar-text navbar-right">Anda login sebagai <b>{{ Auth::user()->name }}</b>. <a href="{{ url('/auth/logout') }}" class="navbar-link">(Logout)</a>
