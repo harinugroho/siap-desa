@@ -8,7 +8,7 @@
             <li><a href="{{ URL::to('tanah') }}">Tanah</a></li>
             <li class="active">Daftar Data</li>
         </ol>
-        <table>
+        <table  class="table table-striped datatable">
             <thead>
                 <tr>
                     <td>No</td>
@@ -76,4 +76,46 @@
             </tbody>
         </table>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+var t = $('.datatable').DataTable( {
+        "columnDefs": [ {
+            "searchable": false,
+            "orderable": false,
+            "targets": 0
+        } ],
+        "order": [[ 1, 'asc' ]],
+        "oLanguage": { 
+            "sSearch": "Cari data: ",
+            "sInfo": "Menampilkan _START_ ke _END_ dari _TOTAL_ data",
+            "sLengthMenu":   "Tampilkan _MENU_ data",
+        }
+    } );
+ 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+        });
+    </script>
+@endsection
+
+@section('css')
+    <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <style>
+        .dataTables_filter {
+            width: 50%;
+        }
+        .dataTables_filter input{
+            width: 80%;
+        }
+        .dataTables_filter label{
+            width: 100%;
+        }
+    </style>
 @endsection
