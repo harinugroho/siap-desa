@@ -18,6 +18,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+    	.click_cursor {
+    		cursor: pointer;
+    	}
+    </style>
   </head>
   <body>
     <div class="container title">
@@ -76,13 +81,83 @@
 				    <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
 				      <div class="panel-body">
 				      	<ul>
-							<li><a href="konversi.html">Konversi, Pengakuan Dan Penegasan Hak</a></li>
-							<li>Pemberian Hak</li>
-							<li>Wakaf</li>
-							<li>P3mb/prk.5</li>
-							<li>Pendaftaran Hak Milik Atas Satuan Rumah Susun</li>
-							<li>Pemberian Hak Guna Usaha</li>
-							<li>Pelayanan Prona</li>
+							<li>
+								<a class="click_cursor" data-toggle="collapse" data-target="#d1">Konversi, Pengakuan Dan Penegasan Hak</a>
+
+								<div id="d1" class="collapse">
+									<ul>
+										<li><a href="konversi.html">Konversi</a></li>
+										<li><a href="pphak.html">Pengakuan Dan Penegasan Hak</a></li>
+									</ul>
+								</div>
+							</li>
+
+
+							<li>
+								<a class="click_cursor" data-toggle="collapse" data-target="#d2">Pemberian Hak</a>
+
+								<div id="d2" class="collapse">
+									<ul>
+										<li>
+											<a class="click_cursor"  data-toggle="collapse" data-target="#d21">Hak Milik</a>
+											<div id="d21" class="collapse">
+												<ul>
+													<li><a href="hmperorangan.html">Hak Milik Perorangan</a></li>
+													<li><a href="hmhukum.html">Hak Milik Badan Hukum</a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<a class="click_cursor"  data-toggle="collapse" data-target="#d22">Hak Guna Bangunan</a>
+											<div id="d22" class="collapse">
+												<ul>
+													<li><a href="hgborang.html">Hak Guna Bangunan Perorangan</a></li>
+													<li><a href="hgbbhukum">Hak Guna Bangunan Badan Hukum </a></li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<a class="click_cursor"  data-toggle="collapse" data-target="#d23">Hak Pakai</a>
+											<div id="d23" class="collapse">
+												<ul>
+													<li><a href="hppwni.html">Hak Pakai Perorangan Wni</a></li>
+													<li><a href="hppwna.html">Hak Pakai Perorangan Wna</a></li>
+													<li><a href="hppbhi.html">Hak Pakai Badan Hukum Indonesia</a></li>
+													<li><a href="hppbha.html">Hak Pakai Badan Hukum Asing</a></li>
+													<li><a href="hpip.html">Hak Pakai Instansi Pemerintah</a></li>
+													<li><a href="hppa.html">Hak Pakai Pemerintah Asing </a></li>
+												</ul>
+											</div>
+										</li>
+										<li><a href="hpippd.html">Hak Pengelolaan Instansi Pemerintah/pemerintah Daerah/BUMN/BUMD</a></li>
+									</ul>
+
+								</div>
+							</li>
+							<li>
+								<a class="click_cursor" data-toggle="collapse" data-target="#d3">Wakaf</a>
+
+								<div id="d3" class="collapse">
+									<ul>
+										<li><a href="wdtb.html">Wakaf Dari Tanah Belum Bersertipikat (Konversi, Pengakuan Dan Penegasan Hak)</a></li>
+										<li><a href="wdtn.html">Wakaf Dari Tanah Negara (Pemberian Hak Tanah Wakaf) </a></li>
+									</ul>
+
+								</div>
+							</li>
+							<li><a href="p3mb.html">P3MB/PRK.5</a></li>
+							<li><a href="phm.html">Pendaftaran Hak Milik Atas Satuan Rumah Susun</a></li>
+							<li>
+								<a class="click_cursor" data-toggle="collapse" data-target="#d4">Pemberian Hak Guna Usaha</a>
+
+								<div id="d4" class="collapse">
+									<ul>
+										<li><a href="hgup.html">Hak Guna Usaha Perorangan</a></li>
+										<li><a href="hgubh.hyml">Hak Guna Usaha Badan Hukum </a></li>
+									</ul>
+
+								</li>
+							<li><a href="prona.html">Pelayanan Prona</a></li>
 						</ul>
 
 				      </div>
@@ -249,5 +324,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script>
+    	function toggle (id) {
+    		// body...
+    	}
+    </script>
   </body>
 </html>
