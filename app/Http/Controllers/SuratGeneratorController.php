@@ -30,35 +30,43 @@ class SuratGeneratorController extends Controller {
     public function sppf($id)
     {
         $order['sppf'] = Sppf::find($id);
-        $order['tanah'] = Tanah::find($order['sppf']->tanah_id);
-        $order['pemilik'] = Pemilik::find($order['tanah']->pemilik_id);
-        $order['umur'] = (date("Y")-(new \DateTime($order['pemilik']->tanggal_lahir))->format("Y"));
-        $order['tanggal'] = ((new \DateTime($order['sppf']->created_at))->format("d m Y"));
+        if ($order['sppf']->status == 0){
+            echo "Administrasi Belum Dilunasi";
+        } else {
+            $order['tanah'] = Tanah::find($order['sppf']->tanah_id);
+            $order['pemilik'] = Pemilik::find($order['tanah']->pemilik_id);
+            $order['umur'] = (date("Y")-(new \DateTime($order['pemilik']->tanggal_lahir))->format("Y"));
+            $order['tanggal'] = ((new \DateTime($order['sppf']->created_at))->format("d m Y"));
 
-        // keterangan untuk suratnya, beserta id surat
-        // di-hash untuk digenerate jadi qr code
-        $ket = array(
-            "jenis" => "sppf",
-            "id" => $id
-        );
-        $hashed = (Crypt::encrypt($ket));
-        $order['hashed'] = $hashed;
-        return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('sppf_'.$order['tanah']->no_persil.'.pdf');
+            // keterangan untuk suratnya, beserta id surat
+            // di-hash untuk digenerate jadi qr code
+            $ket = array(
+                "jenis" => "sppf",
+                "id" => $id
+            );
+            $hashed = (Crypt::encrypt($ket));
+            $order['hashed'] = $hashed;
+            return \PDF::loadView('pdf/sppf', compact('order'))->setPaper('A4')->download('sppf_'.$order['tanah']->no_persil.'.pdf');
+        }
     }
 
     public function riwayat($id){
         $data['surat'] = SuratRiwayatPemilikTanah::find($id);
-        $data['tanah'] = Tanah::find($data['surat']->tanah_id);
-        $data['riwayat'] = RiwayatPemilikTanah::where('tanah_id', $data['tanah']->id)->orderBy('created_at', 'desc')->get();
-        $data['pemilik'] = Pemilik::find($data['tanah']->pemilik_id);
+        if ($data['surat']->status == 0){
+            echo "Administrasi Belum dilunasi";
+        } else {
+            $data['tanah'] = Tanah::find($data['surat']->tanah_id);
+            $data['riwayat'] = RiwayatPemilikTanah::where('tanah_id', $data['tanah']->id)->orderBy('created_at', 'desc')->get();
+            $data['pemilik'] = Pemilik::find($data['tanah']->pemilik_id);
 
-        $ket = array(
-            "jenis" =>"riwayat_pemilik",
-            "id" => $id
-        );
-        $hashed = Crypt::encrypt($ket);
-        $data['hashed'] = $hashed;
-        return \PDF::loadView('pdf/riwayat', compact('data'))->setPaper('A4')->download('riwayat_tanah_'.$data['tanah']->no_persil.'.pdf');//stream();
+            $ket = array(
+                "jenis" =>"riwayat_pemilik",
+                "id" => $id
+            );
+            $hashed = Crypt::encrypt($ket);
+            $data['hashed'] = $hashed;
+            return \PDF::loadView('pdf/riwayat', compact('data'))->setPaper('A4')->download('riwayat_tanah_'.$data['tanah']->no_persil.'.pdf');//stream();
+        }
     }
 
 }

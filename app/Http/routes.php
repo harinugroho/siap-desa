@@ -84,3 +84,6 @@ Route::get('konflik/batal/{id}', 'KonflikController@batal');
 Route::get('konflik/{id}/create', 'KonflikController@create');
 Route::post('konflik/{id}', 'KonflikController@store');
 Route::get('konflik/{id}', 'KonflikController@getKonflikById');
+
+// Route Administrasi
+Route::get('administrasi/bayar/{surat}/{id}', 'PemohonController@bayarSurat');

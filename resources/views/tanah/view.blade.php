@@ -51,25 +51,7 @@
             </div>
             <div class="col-md-6">
                 <table>
-                    <tr>
-                        <td><label>Status</label></td>
-                        <td>
-                            <a href="{{ URL::to("tanah/$tanah->id/status/masalah") }}">
-                                @if ($tanah->masalah)
-                                    <span class="btn btn-xs btn-warning">Bermasalah</span>
-                                @else
-                                    <span class="btn btn-xs btn-success">Tidak Bermasalah</span>
-                                @endif
-                            </a>
-                            <a href="{{ URL::to("tanah/$tanah->id/status/keberatan/") }}">
-                                @if ($tanah->keberatan)
-                                    <span class="btn btn-xs btn-warning">Ada Keberatan</span>
-                                @else
-                                    <span class="btn btn-xs btn-success">Tidak Ada Keberatan</span>
-                                @endif
-                            </a>
-                        </td>
-                    </tr>
+
                     <tr>
                         <td><label>Diperoleh Dari</label></td>
                         <td>{{ $tanah->nama_sebelum }}</td>
@@ -117,6 +99,14 @@
                             <td>
                                 <a href="{{ URL::to("/konflik/$tanah->id") }}"><span class="btn btn-success">Lihat Konflik</span></a>
                             </td>
+                            {{--<td>--}}
+                                {{--@if ((count($riwayat)>0 && $riwayat[0]->status == 0) ||--}}
+                                    {{--(count($allSppf)>0 && $allSppf[0]->status == 0))--}}
+                                    {{--<a href="{{URL::to("administrasi/bayar/$tanah->id")}}"><span class="btn btn-info">Bayar Administrasi</span></a>--}}
+                                {{--@else--}}
+                                    {{--<span class="btn btn-info" disabled>Administrasi Lunas</span>--}}
+                                {{--@endif--}}
+                            {{--</td>--}}
                         </tr>
                     </table>
                         </tr>
@@ -142,6 +132,10 @@
                     <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
+                @elseif ($allSppf[0]->status == 0)
+                    <td>{{ $allSppf[0]->pemohon }}</td>
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
+                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}">Bayar</a></td>
                 @else
                     <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
@@ -154,6 +148,10 @@
                     <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
+                @elseif ($riwayat[0]->status == 0)
+                    <td>{{ $riwayat[0]->pemohon }}</td>
+                    <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
+                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}">Bayar</a></td>
                 @else
                     <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
