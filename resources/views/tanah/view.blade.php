@@ -114,6 +114,9 @@
                             <td>
                                 <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
                             </td>
+                            <td>
+                                <a href="{{ URL::to("/konflik/$tanah->id") }}"><span class="btn btn-success">Lihat Konflik</span></a>
+                            </td>
                         </tr>
                     </table>
                         </tr>

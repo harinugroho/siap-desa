@@ -30,4 +30,11 @@ class ExampleTest extends TestCase {
         $response = $this->call('GET', '/pemilik');
         $this->assertEquals(200, $response->getStatusCode());
     }
+
+    public function testKonflik(){
+        $user = new User(array('name' => 'Admins'));
+        $this->be($user);
+        $response = $this->call('POST', '/konflik/store/1');
+        $this->assertEquals(200, $response->getStatusCode());
+    }
 }

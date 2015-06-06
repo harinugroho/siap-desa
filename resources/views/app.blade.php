@@ -50,6 +50,9 @@
                     </ul>
                 </li>
                 <li><a href="{{ URL::to('surat/pemohon') }}">Daftar Pemohon</a></li>
+                @if (Auth::user()->role == 2)
+                    <li><a href="{{URL::to('konflik/all')}}">Daftar Konflik</a> </li>
+                @endif
             </ul>
             <div class="collapse navbar-collapse">
                 <div class="navbar-text navbar-right">Anda login sebagai <b>{{ Auth::user()->name }}</b>. <a href="{{ url('/auth/logout') }}" class="navbar-link">(Logout)</a>

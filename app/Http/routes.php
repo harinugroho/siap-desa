@@ -71,3 +71,16 @@ Route::get('peta/tanah/{id}', 'PetaController@render');
 
 // Route pemohon surat
 Route::get('surat/pemohon', 'PemohonController@index');
+
+// Route Kepala Desa
+Route::get('konflik/all', 'KepalaDesaController@getAllKonflik');
+Route::get('konflik/setuju/{id}', 'KepalaDesaController@setuju');
+Route::get('konflik/tolak/{id}', 'KepalaDesaController@tolak');
+
+// Route Konflik
+Route::get('konflik/solve/{id}', 'KonflikController@solve');
+Route::post('konflik/solve/{id}', 'KonflikController@storeSolve');
+Route::get('konflik/batal/{id}', 'KonflikController@batal');
+Route::get('konflik/{id}/create', 'KonflikController@create');
+Route::post('konflik/{id}', 'KonflikController@store');
+Route::get('konflik/{id}', 'KonflikController@getKonflikById');
