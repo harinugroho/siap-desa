@@ -62,30 +62,10 @@
     </div>
  	<div class="container">
  		<div class="main">
- 			<h4 class="subtitle">Konversi</h4>
+ 			<h4 class="subtitle">Statistik</h4>
  			
-			<h3>Persyaratan</h3>
-			    <ol>
-			        <li>Formulir permohonan yang sudah diisi dan ditandatangani pemohon atau kuasanya di atas materai cukup</li>
-			        <li>Surat Kuasa apabila dikuasakan</li>
-			        <li>Fotocopy identitas (KTP, KK) pemohon dan kuasa apabila dikuasakan, yang telah dicocokkan dengan aslinya oleh petugas loket</li>
-			        <li>Bukti pemilikan tanah/alas hak milik adat/bekas milik adat</li>
-			        <li>Foto copy SPPT PBB Tahun berjalan yang telah dicocokkan dengan aslinya oleh petugas loket dan penyerahan bukti SSB (BPHTB)</li>
-			        <li>Melampirkan bukti SSP/PPh sesuai dengan ketentuan</li>
-			    </ol>
-			<h3>Waktu</h3>
+	   <div id="container" style="width: 100%; margin: 0 auto"></div>
 
-			98 (sembilan puluh delapan) hari
-
-			<h3>Keterangan</h3>
-
-			Formulir permohonan memuat:
-			<ol>
-			    <li>Identitas diri</li>
-			    <li>Luas, letak dan penggunaan tanah yang dimohon</li>
-			    <li>Pernyataan tanah tidak sengketa</li>
-			    <li>Pernyataan tanah dikuasai secara fisik</li>
-			</ol>
 
 		</div>
  		<div class="sidebar">
@@ -130,5 +110,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/highcharts.js"></script>
+    <script src="js/exporting.js"></script>
+    <script>
+    $(function () {
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser market shares at a specific website, 2014'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox',   45.0],
+                ['IE',       26.8],
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },
+                ['Safari',    8.5],
+                ['Opera',     6.2],
+                ['Others',   0.7]
+            ]
+        }]
+    });
+});
+
+
+    </script>
   </body>
 </html>
