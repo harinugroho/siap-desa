@@ -1,12 +1,6 @@
 <?php namespace App\Http\Controllers;
-use App\Models\Pemilik;
-use App\Models\Sppf;
-use App\Models\SuratRiwayatPemilikTanah;
+use App\Models\Koordinat;
 use App\Models\Tanah;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 
 class PetaController extends Controller {
 
@@ -16,8 +10,10 @@ class PetaController extends Controller {
     }
 
     public function render($id){
+        $koordinat = Koordinat::where("tanah_id", $id)->get();
         $tanah = Tanah::find($id);
         return view('peta/view')
-            ->with('tanah', $tanah);
+            ->with('tanah', $tanah)
+            ->with("koordinat", $koordinat);
     }
 }

@@ -88,7 +88,7 @@
                     <table class="buttons">
                         <tr>
                             <td>
-                                <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
+                                <a href="{{ URL::to("/konflik/$tanah->id") }}"><span class="btn btn-success">Lihat Konflik</span></a>
                             </td>
                             <td>
                                 <a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a>
@@ -96,9 +96,7 @@
                             <td>
                                 <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
                             </td>
-                            <td>
-                                <a href="{{ URL::to("/konflik/$tanah->id") }}"><span class="btn btn-success">Lihat Konflik</span></a>
-                            </td>
+
                             {{--<td>--}}
                                 {{--@if ((count($riwayat)>0 && $riwayat[0]->status == 0) ||--}}
                                     {{--(count($allSppf)>0 && $allSppf[0]->status == 0))--}}
@@ -107,6 +105,14 @@
                                     {{--<span class="btn btn-info" disabled>Administrasi Lunas</span>--}}
                                 {{--@endif--}}
                             {{--</td>--}}
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
+                            </td>
+                            <td>
+                                <a href="{{ URL::to("/tanah/$tanah->id/koordinat") }}"><span class="btn btn-success">Lihat Koordinat</span></a>
+                            </td>
                         </tr>
                     </table>
                         </tr>

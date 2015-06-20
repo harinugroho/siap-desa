@@ -3,6 +3,12 @@
 @section('content')
 <div class="header container">Peta Tanah</div>
     <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="{{ URL::to('/') }}">Home</a></li>
+            <li><a href="{{ URL::to('/tanah') }}">Pertanahan</a></li>
+            <li><a href="{{ URL::to("/tanah/$tanah->id") }}">{{ $tanah->nama }}</a></li>
+            <li class="active">Peta</li>
+        </ol>
         <div class="col-md-1" id="map-canvas"></div>
     </div>
 </div>
@@ -24,12 +30,25 @@
             }
             var map = new google.maps.Map(mapCanvas, mapOptions);
 
-            // To add the marker to the map, call setMap();
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                title:"No Persil {{ $tanah->no_persil }}"
+            // Define the LatLng coordinates for the polygon's path.
+            var pointCoords = [
+                @foreach($koordinat as $row)
+                    new google.maps.LatLng( {{ $row->latitude }} , {{ $row->longitude }} ),
+                @endforeach
+                new google.maps.LatLng( {{ $koordinat[0]['latitude'] }} , {{ $koordinat[0]['longitude'] }} ),
+            ];
+
+            // Define layer
+            layer = new google.maps.Polygon({
+                paths: pointCoords,
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35
             });
-            marker.setMap(map);
+
+            layer.setMap(map);
 
             // Tooltip
             var contentString = '<div id="content">'+
@@ -44,10 +63,12 @@
                     '</div>'+
                     '</div>';
             var infowindow = new google.maps.InfoWindow({
-                content: contentString
+                content: contentString,
+                position: new google.maps.LatLng( {{ $koordinat[0]['latitude'] }} , {{ $koordinat[0]['longitude'] }} )
             });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map,marker);
+
+            google.maps.event.addListener(layer, 'click', function() {
+                infowindow.open(map,layer);
             });
 
         }

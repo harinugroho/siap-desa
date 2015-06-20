@@ -11,7 +11,6 @@
 |
 */
 
-use App\Http\Controllers\TanahController;
 
 Route::get('/', 'HomeController@index');
 
@@ -47,6 +46,9 @@ Route::get('tanah/riwayat/{id}/edit', 'TanahController@riwayat_edit');
 Route::put('tanah/riwayat/{id}/update', 'TanahController@riwayat_update');
 Route::get('tanah/{id}/status/masalah', 'TanahController@masalah_update');
 Route::get('tanah/{id}/status/keberatan', 'TanahController@keberatan_update');
+Route::get('tanah/{tanah_id}/koordinat/delete/{id}', 'KoordinatController@destroy');
+Route::get('tanah/{id}/koordinat', 'KoordinatController@index');
+Route::post('tanah/{id}/koordinat', 'KoordinatController@store');
 
 // Route Surat Pernyataan Penguasaan Fisik
 Route::get('surat/sppf/{id}/create', 'DataSuratController@sppf_create');
