@@ -41,8 +41,8 @@
                     <div class="form-group">
                         <label for="nama">Tempat/Tanggal Lahir</label>
                         <div class="form-inline">
-                            <input name="tempat_lahir" value="{{old('tempat_lahir')}}" class="form-control" id="tempat" placeholder="Tempat Lahir">
-                            <input name="tanggal_lahir" type="date" value="{{old('tanggal_lahir')}}" class="form-control" id="tanggal" placeholder="Tanggal Lahir">
+                            <input name="tempat_lahir" value="{{old('tempat_lahir')}}" class="form-control " id="tempat" placeholder="Tempat Lahir">
+                            <input name="tanggal_lahir" type="text" value="{{old('tanggal_lahir')}}" class="form-control datepicker" id="tanggal" placeholder="Tanggal Lahir">
                         </div>
                     </div>
                 </div>

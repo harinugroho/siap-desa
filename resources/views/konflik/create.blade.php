@@ -48,6 +48,10 @@
                             <option {{(old('jenis')==1)?"selected":""}} value="1">Pengajuan Keberatan</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="penerima">Penerima Laporan</label>
+                        <input name="penerima" value="{{ Auth::user()->name }}" class="form-control" id="penerima" disabled>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">

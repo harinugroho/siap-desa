@@ -18,6 +18,7 @@
                 <th>Deskripsi</th>
                 <th>Jenis</th>
                 <th>Status</th>
+                <th>Penerima Laporan</th>
                 <th>Tindakan</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td>{{$row->deskripsi}}</td>
                     <td>{{($row->jenis==0)?"Masalah":"Keberatan"}}</td>
                     <td>{{$status[$row->status]}}</td>
+                    <td>penerima laporan</td>
                     <td>
                         @if ($row->status == 0)
                             <a href="{{URL::to("konflik/setuju/$row->id")}}"><button>Setujui</button></a>
