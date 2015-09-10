@@ -131,6 +131,7 @@
                 <th>Pemohon</th>
                 <th style="text-align:center;">Edit</th>
                 <th style="text-align:center;">Download</th>
+                <th style="text-align:center;">Status Pembayaran</th>
             </tr>
             <tr>
                 <td>Surat Pernyataan Penguasaan Fisik</td>
@@ -138,14 +139,17 @@
                     <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
+                    <td style="text-align:center;">Lunas</td>
                 @elseif ($allSppf[0]->status == 0)
                     <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}">Bayar</a></td>
+                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}" class="btn btn-danger">Bayar</a></td>
+                    <td style="text-align:center;">Belum Lunas</td>
                 @else
                     <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{ URL::to("generate/sppf/".$allSppf[0]->id) }}">Download</a></td>
+                    <td style="text-align:center;"><a href="{{ URL::to("generate/sppf/".$allSppf[0]->id) }}" class="btn btn-success">Download</a></td>
+                    <td style="text-align:center;">Lunas</td>
                 @endif
             </tr>
             <tr>
@@ -154,14 +158,19 @@
                     <td>--</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/$tanah->id/create") }}">Buat Surat</a></td>
                     <td style="text-align:center;"><strike>Download</strike></td>
+                    <td style="text-align:center;">Lunas</td>
                 @elseif ($riwayat[0]->status == 0)
                     <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}">Bayar</a></td>
+                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}" class="btn btn-danger">Bayar</a></td>
+                    
+                    <td style="text-align:center;">Belum Lunas</td>
                 @else
                     <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{ URL::to("generate/riwayat/".$riwayat[0]->id) }}">Download</a></td>
+                    <td style="text-align:center;"><a href="{{ URL::to("generate/riwayat/".$riwayat[0]->id) }}" class="btn btn-success">Download</a></td>
+                    
+                    <td style="text-align:center;">Lunas</td>
                 @endif
             </tr>
         </table>

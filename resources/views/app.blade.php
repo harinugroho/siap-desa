@@ -52,7 +52,12 @@
                 </li>
                 <li><a href="{{ URL::to('surat/pemohon') }}">Daftar Pemohon</a></li>
                 @if (Auth::user()->role == 2)
-                    <li><a href="{{URL::to('konflik/all')}}">Daftar Konflik</a> </li>
+                    <li><a href="{{URL::to('konflik/all')}}">Daftar Konflik
+                        <!--TODO: IF Daftar Konflik != NULL-->
+                        <span style="display:inline-block;border-radius: 50%;width: 8px;height: 8px; background:#f00">&nbsp;</span>
+                    </a> 
+
+                    </li>
                 @endif
             </ul>
             <div class="collapse navbar-collapse">
