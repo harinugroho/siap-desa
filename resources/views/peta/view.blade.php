@@ -31,11 +31,12 @@
             var map = new google.maps.Map(mapCanvas, mapOptions);
 
             // Define the LatLng coordinates for the polygon's path.
+        @if(count($koordinat)>0)
             var pointCoords = [
-                @foreach($koordinat as $row)
-                    new google.maps.LatLng( {{ $row->latitude }} , {{ $row->longitude }} ),
-                @endforeach
-                new google.maps.LatLng( {{ $koordinat[0]['latitude'] }} , {{ $koordinat[0]['longitude'] }} ),
+                    @foreach($koordinat as $row)
+                        new google.maps.LatLng( {{ $row->latitude }} , {{ $row->longitude }} ),
+                    @endforeach
+                    new google.maps.LatLng( {{ $koordinat[0]['latitude'] }} , {{ $koordinat[0]['longitude'] }} ),
             ];
 
             // Define layer
@@ -70,6 +71,7 @@
             google.maps.event.addListener(layer, 'click', function() {
                 infowindow.open(map,layer);
             });
+        @endif
 
         }
         google.maps.event.addDomListener(window, 'load', initialize);

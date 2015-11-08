@@ -20,6 +20,7 @@ class CreateKonflikTable extends Migration {
             $table->string('pengaju');
             $table->string('judul');
             $table->string('deskripsi');
+            $table->string('penerima');
             $table->integer('status');
             $table->integer('jenis');
             $table->timestamps();

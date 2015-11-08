@@ -14,7 +14,7 @@ use App\Models\Konflik;
 use App\Models\Pemilik;
 use App\Models\Tanah;
 
-use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -62,6 +62,7 @@ class KonflikController extends Controller {
         } else {
             $input['konflik_id'] = 0;
             $input['status'] = 0;
+            $input['penerima'] = Auth::user()->name;
             Konflik::create($input);
             Session::flash('message', 'Data pengajuan konflik berhasil dimasukkan!');
             return Redirect::to("/konflik/".$input['tanah_id']);
