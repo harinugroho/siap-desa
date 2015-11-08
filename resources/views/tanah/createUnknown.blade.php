@@ -179,6 +179,15 @@
                         </div>
                     </div>
                 </div>
+            </div><div class="row">
+                <div class="col-md-6">
+                    
+                </div><div class="col-md-6">
+                    <div class="form-group">
+                        <label>Scan Letter C</label><br/>
+                        <input name="scan_letter_c" type="file">
+                    </div>
+                </div>
             </div>
             <center>
                 <a href="{{URL::to("/")}}"><span class="btn btn-danger">Batal</span></a>

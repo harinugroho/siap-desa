@@ -54,6 +54,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cbdb72', end
   }
 }
 
+.nopaddingleft {
+   padding-left: 0 !important;
+}
+.nopaddingright {
+   padding-left: 0 !important;
+}
+
 .container {
 	padding: 70px;
     padding-top: 10px;

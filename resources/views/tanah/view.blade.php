@@ -85,17 +85,26 @@
                         <td>{{ $tanah->luas }}</td>
                     </tr>
                     <tr>
-                    <table class="buttons">
-                        <tr>
-                            <td>
+                        <td width="100px"><label>Letter C</label></td>
+                        <td><a href="#">Download</a></td>
+                    </tr>
+                    <tr>
+                        <td width="100px"><label>Download Salinan</label></td>
+                        <td><a href="#">Download</a></td>
+                    </tr>
+                    <tr>
+                    </table>
+                    <div class="buttons">
+                        <div class="row">
+                            <!-- <td> -->
                                 <a href="{{ URL::to("/konflik/$tanah->id") }}"><span class="btn btn-success">Lihat Konflik</span></a>
-                            </td>
-                            <td>
+                            <!-- </td> -->
+                            <!-- <td> -->
                                 <a href="{{ URL::to("/tanah/riwayat/$tanah->id") }}"><span class="btn btn-success">Lihat Riwayat Pemilik</span></a>
-                            </td>
-                            <td>
+                            <!-- </td> -->
+                            <!-- <td> -->
                                 <a href="{{ URL::to("/tanah/ubah_pemilik/$tanah->id") }}"><span class="btn btn-danger">Lakukan Peralihan Tanah</span></a>
-                            </td>
+                            <!-- </td> -->
 
                             {{--<td>--}}
                                 {{--@if ((count($riwayat)>0 && $riwayat[0]->status == 0) ||--}}
@@ -105,16 +114,16 @@
                                     {{--<span class="btn btn-info" disabled>Administrasi Lunas</span>--}}
                                 {{--@endif--}}
                             {{--</td>--}}
-                        </tr>
-                        <tr>
-                            <td>
+                        </div>
+                        <div class="row" style="padding-top:8px;">
+                            <!-- <td> -->
                                 <a href="{{ URL::to("/peta/tanah/$tanah->id") }}"><span class="btn btn-success">Lihat Peta</span></a>
-                            </td>
-                            <td>
+                            <!-- </td> -->
+                            <!-- <td> -->
                                 <a href="{{ URL::to("/tanah/$tanah->id/koordinat") }}"><span class="btn btn-success">Lihat Koordinat</span></a>
-                            </td>
-                        </tr>
-                    </table>
+                            <!-- </td> -->
+                        </div>
+                    </div>
                         </tr>
                 </table>
             </div>
@@ -143,7 +152,8 @@
                 @elseif ($allSppf[0]->status == 0)
                     <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}" class="btn btn-danger">Bayar</a></td>
+                    <!-- <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}" class="btn btn-danger">Bayar</a></td> -->
+                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger">Bayar</a></td>
                     <td style="text-align:center;">Belum Lunas</td>
                 @else
                     <td>{{ $allSppf[0]->pemohon }}</td>
@@ -162,7 +172,8 @@
                 @elseif ($riwayat[0]->status == 0)
                     <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
-                    <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}" class="btn btn-danger">Bayar</a></td>
+                    <!-- <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}" class="btn btn-danger">Bayar</a></td> -->
+                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger">Bayar</a></td>
                     
                     <td style="text-align:center;">Belum Lunas</td>
                 @else
@@ -174,6 +185,28 @@
                 @endif
             </tr>
         </table>
+
+        <div class="modal fade" id="kuitansi" tabindex="-1" role="dialog" aria-labelledby="kuitansiLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="kuitansiLabel">Masukkan Nomor Kuitansi</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                        <label>Nomor Kuitansi</label><br/>
+                        <input name="no_kuitansi" type="text" class="form-control" placeholder="Nomor Kuitansi" autofocus>
+                    
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary"data-dismiss="modal">Bayar</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 
 @endsection

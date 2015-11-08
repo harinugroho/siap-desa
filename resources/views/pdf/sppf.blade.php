@@ -2,6 +2,7 @@
     <style>
         body {
             font-family: 'times new roman';
+            padding: 0px;
         }
         .isian {
             padding-left: 20px;

@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Atas Nama</label>
+                        <label>Atas Namaa</label>
                         <input disabled class="form-control" value="@if (old('nama')){{old('nama')}}@else{{$pemilik->nama}}@endif">
                         <input type="hidden" name="nama" class="form-control" placeholder="Masukkan Nama" value="@if (old('nama')){{old('nama')}}@else{{$pemilik->nama}}@endif">
                     </div>
