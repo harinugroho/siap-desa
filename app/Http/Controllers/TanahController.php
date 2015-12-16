@@ -8,9 +8,9 @@ use App\Models\SuratRiwayatPemilikTanah;
 use App\Models\Tanah;
 use App\Models\Pemilik;
 use App\Models\RiwayatPemilikTanah;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -63,32 +63,35 @@ class TanahController extends Controller {
 	public function store()
 	{
         $input = Input::all();
+//        dd(public_path());
+//        dd(Input::file('scan_letter_c'));
         // get data pemilik
         $pemilik = Pemilik::find($input['pemilik_id']);
         $input['nama'] = $pemilik->nama;
         $rules = array(
-            'pemilik_id' => 'required',
-            'no_sppt_pbb' => 'required',
-            'no_buku_c' => 'required',
-            'jalan' => 'required',
-            'desa' => 'required',
-            'nama_sebelum' => 'required',
-            'nama' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
-            'kodepos' => 'required|numeric',
-            'kabupaten' => 'required',
-            'diperoleh_tahun' => 'required|numeric',
-            'batas_utara' => 'required',
-            'batas_selatan' => 'required',
-            'batas_barat' => 'required',
-            'batas_timur' => 'required',
-            'luas' => 'required|numeric'
+            'pemilik_id' => '',
+            'no_sppt_pbb' => '',
+            'no_buku_c' => '',
+            'jalan' => '',
+            'desa' => '',
+            'nama_sebelum' => '',
+            'nama' => '',
+            'rt' => '',
+            'rw' => '',
+            'kodepos' => 'numeric',
+            'kabupaten' => '',
+            'diperoleh_tahun' => 'numeric',
+            'batas_utara' => '',
+            'batas_selatan' => '',
+            'batas_barat' => '',
+            'batas_timur' => '',
+            'luas' => 'numeric',
+            'scan_letter_c' => 'required'
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
             // redirect to form without pemilik_id
-            if ("unkown" == ($input['_mode'])) {
+            if ("unknown" == ($input['_mode'])) {
                 return Redirect::to("tanah/create")
                     ->withErrors($validator)
                     ->withInput($input);
@@ -98,6 +101,15 @@ class TanahController extends Controller {
                     ->withInput($input);
             }
         } else {
+            if (Input::hasFile('scan_letter_c')){
+                $dest = public_path() . '/scan_letter_c/';
+                $ext = Request::file('scan_letter_c')->getClientOriginalExtension();
+                $filename = rand(0,999999999).'.'.$ext;
+                Request::file('scan_letter_c')->move($dest, $filename);
+                $input['scan_letter_c'] = $filename;
+            } else {
+                $input['scan_letter_c'] = '';
+            }
             $tanah = Tanah::create($input);
             // add pemilik to riwayat tanah
             $riwayat = array('tanah_id' => $tanah->id, 'nama' => $input['nama'], 'no_buku_c' => $input['no_buku_c'], 'tanggal' => date("Y-m-d"));
@@ -149,22 +161,22 @@ class TanahController extends Controller {
 	{
         $input = Input::except('_method', '_token');
         $rules = array(
-            'pemilik_id' => 'required',
-            'no_sppt_pbb' => 'required',
-            'jalan' => 'required',
-            'desa' => 'required',
-            'nama_sebelum' => 'required',
-            'nama' => 'required',
-            'rt' => 'required',
-            'rw' => 'required',
-            'kodepos' => 'required',
-            'kabupaten' => 'required',
-            'diperoleh_tahun' => 'required',
-            'batas_utara' => 'required',
-            'batas_selatan' => 'required',
-            'batas_barat' => 'required',
-            'batas_timur' => 'required',
-            'luas' => 'required'
+            'pemilik_id' => '',
+            'no_sppt_pbb' => '',
+            'jalan' => '',
+            'desa' => '',
+            'nama_sebelum' => '',
+            'nama' => '',
+            'rt' => '',
+            'rw' => '',
+            'kodepos' => '',
+            'kabupaten' => '',
+            'diperoleh_tahun' => '',
+            'batas_utara' => '',
+            'batas_selatan' => '',
+            'batas_barat' => '',
+            'batas_timur' => '',
+            'luas' => ''
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
@@ -276,9 +288,9 @@ class TanahController extends Controller {
     public function riwayat_update($id){
         $input = Input::except('_method', '_token');
         $rules = array(
-            'nama' => 'required',
-            'no_buku_c' => 'required',
-            'tanggal' => 'required'
+            'nama' => '',
+            'no_buku_c' => '',
+            'tanggal' => ''
         );
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {

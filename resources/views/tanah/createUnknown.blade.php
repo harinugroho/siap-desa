@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="header container">Tambah Tanah</div>
-    <form class="container" action="{{ URL::to("tanah/store") }}" method="post">
+    <form class="container" action="{{ URL::to("tanah/store") }}" method="post" enctype="multipart/form-data">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>

@@ -4,6 +4,7 @@ use App\Models\Counter;
 use App\Models\RiwayatPemilikTanah;
 use App\Models\Sppf;
 use App\Models\SuratRiwayatPemilikTanah;
+use Illuminate\Support\Facades\Input;
 
 class PemohonController extends Controller {
 	/**
@@ -31,28 +32,29 @@ class PemohonController extends Controller {
 	}
 
     public function bayarSurat($surat, $id){
+        $no = Input::get('no_kuitansi');
         if ($surat == "sppf") {
             $sppf = Sppf::find($id);
             if ($sppf->status == 0) {
                 $cnt = Counter::where('nama', 'kuitansi')->firstOrFail();
-                $cnt->counter = $cnt->counter+1;;
+                $cnt->counter = 1;;
                 $cnt->save();
                 $sppf->status = $cnt->counter;
                 $sppf->save();
             }
-            $data['no'] = $sppf->status;
+            $data['no'] = $no;
             $data['nama'] = $sppf->pemohon;
             $data['keterangan'] = "Pembayaran Permohonan Surat Pernyataan Penguasaan Fisik";
         } else if ($surat == "riwayat") {
             $riwayat = SuratRiwayatPemilikTanah::find($id);
             if ($riwayat->status == 0){
                 $cnt = Counter::where('nama', 'kuitansi')->firstOrFail();
-                $cnt->counter = $cnt->counter+1;;
+                $cnt->counter = 1;;
                 $cnt->save();
                 $riwayat->status = $cnt->counter;
                 $riwayat->save();
             }
-            $data['no'] = $riwayat->status;
+            $data['no'] = $no;
             $data['nama'] = $riwayat->pemohon;
             $data['keterangan'] = "Pembayaran Permohonan Surat Keterangan Riwayat Pemilik Tanah";
         }

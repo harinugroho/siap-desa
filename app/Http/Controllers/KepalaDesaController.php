@@ -10,7 +10,6 @@ namespace app\Http\Controllers;
 
 
 use App\Models\Konflik;
-use Illuminate\Routing\Controller;
 
 class KepalaDesaController extends Controller {
     function __construct()

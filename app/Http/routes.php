@@ -68,6 +68,9 @@ Route::get('generate/{hashed}', 'SuratGeneratorController@index');
 Route::get('generate/sppf/{id}', 'SuratGeneratorController@sppf');
 Route::get('generate/riwayat/{id}', 'SuratGeneratorController@riwayat');
 
+// Route public file
+Route::get('public/{folder}/{file}', 'DownloadController@folderFile');
+
 // Route untuk peta
 Route::get('peta/tanah/{id}', 'PetaController@render');
 
@@ -88,4 +91,4 @@ Route::post('konflik/{id}', 'KonflikController@store');
 Route::get('konflik/{id}', 'KonflikController@getKonflikById');
 
 // Route Administrasi
-Route::get('administrasi/bayar/{surat}/{id}', 'PemohonController@bayarSurat');
+Route::post('administrasi/bayar/{surat}/{id}', 'PemohonController@bayarSurat');

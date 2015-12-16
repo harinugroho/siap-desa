@@ -6,6 +6,10 @@
         .isian {
             padding-left: 20px;
         }
+        p {
+            margin: 0px;
+            padding: 0px;
+        }
     </style>
     <body>
     <table>

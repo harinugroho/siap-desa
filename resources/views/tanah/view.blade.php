@@ -86,7 +86,11 @@
                     </tr>
                     <tr>
                         <td width="100px"><label>Letter C</label></td>
-                        <td><a href="#">Download</a></td>
+                        @if($tanah->scan_letter_c != '')
+                        <td><a href="/public/scan_letter_c/{{ $tanah->scan_letter_c }}">Download</a></td>
+                        @else
+                        <td><strike>Download</strike></td>
+                        @endif
                     </tr>
                     <tr>
                         <td width="100px"><label>Download Salinan</label></td>
@@ -153,7 +157,7 @@
                     <td>{{ $allSppf[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/sppf/".$allSppf[0]->id."/edit") }}">Ubah Surat</a></td>
                     <!-- <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}" class="btn btn-danger">Bayar</a></td> -->
-                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger">Bayar</a></td>
+                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger" data-url="{{URL::to("administrasi/bayar/sppf/".$allSppf[0]->id)}}">Bayar</a></td>
                     <td style="text-align:center;">Belum Lunas</td>
                 @else
                     <td>{{ $allSppf[0]->pemohon }}</td>
@@ -173,7 +177,7 @@
                     <td>{{ $riwayat[0]->pemohon }}</td>
                     <td style="text-align:center;"><a href="{{ URL::to("surat/riwayat/".$riwayat[0]->id."/edit") }}">Ubah Surat</a></td>
                     <!-- <td style="text-align:center;"><a href="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}" class="btn btn-danger">Bayar</a></td> -->
-                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger">Bayar</a></td>
+                    <td style="text-align:center;"><a data-toggle="modal" data-target="#kuitansi"class="btn btn-danger"  data-url="{{URL::to("administrasi/bayar/riwayat/".$riwayat[0]->id)}}">Bayar</a></td>
                     
                     <td style="text-align:center;">Belum Lunas</td>
                 @else
@@ -187,25 +191,28 @@
         </table>
 
         <div class="modal fade" id="kuitansi" tabindex="-1" role="dialog" aria-labelledby="kuitansiLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="kuitansiLabel">Masukkan Nomor Kuitansi</h4>
+            <form name="form_modal" method="POST">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="kuitansiLabel">Masukkan Nomor Kuitansi</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                            <label>Nomor Kuitansi</label><br/>
+                            <input name="no_kuitansi" type="text" class="form-control" placeholder="Nomor Kuitansi" autofocus>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <input type="submit" class="btn btn-primary" value="Bayar"/>
+                  </div>
+                </div>
               </div>
-              <div class="modal-body">
-                <div class="form-group">
-                        <label>Nomor Kuitansi</label><br/>
-                        <input name="no_kuitansi" type="text" class="form-control" placeholder="Nomor Kuitansi" autofocus>
-                    
-                    </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary"data-dismiss="modal">Bayar</button>
-              </div>
-            </div>
-          </div>
+            </form>
         </div>
     </div>
 
@@ -217,4 +224,17 @@
             padding-right: 5px;
         }
     </style>
+@endsection
+@section('script')
+    <script>
+        $('#kuitansi').on('show.bs.modal', function(e) {
+        //get data-id attribute of the clicked element
+        var url = $(e.relatedTarget).data('url');
+            console.log(url);
+
+        //populate the textbox
+        $(e.currentTarget).find('form[name="form_modal"]').attr('action',url);
+        });
+
+    </script>
 @endsection

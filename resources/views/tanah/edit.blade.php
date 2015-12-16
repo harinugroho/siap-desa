@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
     <div class="header container">Edit Data Tanah <span class="header-right">({{ $pemilik->no_ktp }} - {{ $pemilik->nama }})</span></div>
-    <form class="container" action="{{ URL::to("tanah/$tanah->id") }}" method="post">
+    <form class="container" action="{{ URL::to("tanah/$tanah->id") }}" method="post" enctype="multipart/form-data">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -151,6 +151,16 @@
                             <input name="luas" class="form-control" placeholder="Luas Tanah" value="@if (old('luas')){{old('luas')}}@else{{$tanah->luas}}@endif">
                             <span class="input-group-addon"> m2</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                </div><div class="col-md-6">
+                    <div class="form-group">
+                        <label>Scan Letter C</label><br/>
+                        <input name="scan_letter_c" type="file">
                     </div>
                 </div>
             </div>
