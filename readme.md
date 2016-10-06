@@ -52,3 +52,5 @@ chmod 777 -R vendor/
 * Jenkins CI ada di http://107.170.249.8/job/SIAP%20Desa/
 
 When a change is committed, Jenkins will push the changes automatically to the server.
+
+Overtaken by Ristek Fasilkom UI 2016
